@@ -1,0 +1,62 @@
+name: libamxb
+
+short_description: "Bus agnostic C API (mediator)"
+long_description: ""
+
+type: library
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/libraries/libamxb"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_LIB_AMXB:
+    super: True
+    default: y
+    type: bool
+    description: "Build libamxb"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  doc:
+    - directory: "doc"
+      target: "doc"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+artifacts:
+- source: "include/amxb/*.h"
+  destination: "$(INCLUDEDIR)/amxb/"
+  permissions: "0644"
+- source: "output/$(MACHINE)/$(COMPONENT).so.$(VERSION)"
+  destination: "$(LIBDIR)/$(COMPONENT).so.$(VERSION)"
+  permissions: "0644"
+  version: True
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxp"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  - name: "uriparser"
+    min: "*"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxp"
+  - name: "libamxd"
+  - name: "uriparser"

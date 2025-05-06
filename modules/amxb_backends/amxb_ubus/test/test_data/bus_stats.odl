@@ -1,0 +1,17 @@
+import "../common/test_mod/test_mod.so" as "test_mod";
+
+%config {
+    name = "bus-stats";
+    backend-dir = "../";
+    import-dbg = true;
+}
+
+%define {
+    object TestBusStats {
+        htable get_bus_stats_for(%in %mandatory string uri);
+    }
+}
+
+%define {
+    entry-point test_mod.test_mod_main;
+}

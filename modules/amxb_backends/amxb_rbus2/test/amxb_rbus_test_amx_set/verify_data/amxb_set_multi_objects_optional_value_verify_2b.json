@@ -1,0 +1,9 @@
+[
+    {
+        "TopLevel.Level1.1.Level2A.": {
+            "L2AText": "TestingPartial-optional-2",
+            "L2ASignedNumber": 50,
+            "L2AUnsignedNumber": 15
+        }
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "result": {
+            "Device.SoftwareModules.ExecEnv.1.": {
+                "Enable": true,
+                "InitialRunLevel": 50
+            },
+            "Device.SoftwareModules.ExecEnv.2.": {
+                "Enable": true,
+                "InitialRunLevel": 50
+            }
+        },
+        "status": 0,
+        "path": "Device.SoftwareModules.ExecEnv.*."
+    },
+    {
+        "result": {
+            "TopLevel.Level1.1.Level2A.Level3.1.": {
+                "L3Text": "TestingPartial-2",
+                "L3SignedNumber": 2000
+            }
+        },
+        "status": 0,
+        "path": "TopLevel.Level1.1.Level2A.Level3.1."
+    }
+]

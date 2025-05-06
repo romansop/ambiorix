@@ -1,0 +1,16 @@
+[
+    {
+        "parameters": {
+            "Enable": true,
+            "InitialRunLevel": 50
+        },
+        "path": "Device.SoftwareModules.ExecEnv.*."
+    },
+    {
+        "parameters": {
+            "L3Text": "TestingPartial-2",
+            "L3SignedNumber": 2000
+        },
+        "path": "TopLevel.Level1.1.Level2A.Level3.1."
+    }
+]

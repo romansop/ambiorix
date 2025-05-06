@@ -1,0 +1,189 @@
+[
+    {
+        "Device.Greeter.History.{i}.": {
+            "supported_events": {
+
+            },
+            "supported_commands": [
+
+            ],
+            "supported_params": [
+                {
+                    "type": 12,
+                    "value_change": 1,
+                    "param_name": "Retain",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": 1,
+                    "param_name": "Message",
+                    "access": 0
+                },
+                {
+                    "type": 1,
+                    "value_change": 1,
+                    "param_name": "From",
+                    "access": 0
+                },
+                {
+                    "type": 1,
+                    "value_change": 1,
+                    "param_name": "Alias",
+                    "access": 1
+                },
+                {
+                    "type": 8,
+                    "value_change": 1,
+                    "param_name": "NumberOfInfoEntries",
+                    "access": 0
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "Device.Greeter.History.{i}.Info.{i}.": {
+            "supported_events": {
+
+            },
+            "supported_commands": [
+
+            ],
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": 1,
+                    "param_name": "Text",
+                    "access": 1
+                },
+                {
+                    "type": 12,
+                    "value_change": 1,
+                    "param_name": "Disabled",
+                    "access": 1
+                },
+                {
+                    "type": 8,
+                    "value_change": 1,
+                    "param_name": "Number",
+                    "access": 1
+                },
+                {
+                    "type": 4,
+                    "value_change": 1,
+                    "param_name": "SignedNumber",
+                    "access": 1
+                },
+                {
+                    "type": 16,
+                    "value_change": 2,
+                    "param_name": "Local",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": 1,
+                    "param_name": "Alias",
+                    "access": 1
+                },
+                {
+                    "type": 16,
+                    "value_change": 2,
+                    "param_name": "UTC",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": 1,
+                    "param_name": "Flags",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "Device.Greeter.": {
+            "supported_events": {
+                "MyEvent!": [
+                    "data"
+                ]
+            },
+            "supported_commands": [
+                {
+                    "command_type": 1,
+                    "output_arg_names": [
+
+                    ],
+                    "input_arg_names": [
+                        "data"
+                    ],
+                    "command_name": "send_event()"
+                },
+                {
+                    "command_type": 1,
+                    "output_arg_names": [
+                        "message",
+                        "data"
+                    ],
+                    "input_arg_names": [
+
+                    ],
+                    "command_name": "test_out_args()"
+                },
+                {
+                    "command_type": 2,
+                    "output_arg_names": [
+
+                    ],
+                    "input_arg_names": [
+                        "message"
+                    ],
+                    "command_name": "print_message()"
+                },
+                {
+                    "command_type": 2,
+                    "output_arg_names": [
+                        "message",
+                        "data"
+                    ],
+                    "input_arg_names": [
+                        "time"
+                    ],
+                    "command_name": "test_out_args_deferred()"
+                },
+                {
+                    "command_type": 1,
+                    "output_arg_names": [
+
+                    ],
+                    "input_arg_names": [
+                        "uri"
+                    ],
+                    "command_name": "get_bus_stats_for()"
+                }
+            ],
+            "supported_params": [
+                {
+                    "type": 8,
+                    "value_change": 1,
+                    "param_name": "NumberOfHistoryEntries",
+                    "access": 0
+                },
+                {
+                    "type": 8,
+                    "value_change": 1,
+                    "param_name": "MaxHistory",
+                    "access": 0
+                },
+                {
+                    "type": 1,
+                    "value_change": 1,
+                    "param_name": "State",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": false,
+            "access": 0
+        }
+    }
+]

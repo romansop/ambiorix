@@ -1,0 +1,7 @@
+[{
+	"Device.SoftwareModules.ExecEnvClass.1.Capability.1.": {
+		"SpecificationVersion": "1.0.1",
+		"Specification": "TestSpecification",
+		"SpecificationURI": "https://test.com/test_uri"
+	}
+}]

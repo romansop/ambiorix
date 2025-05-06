@@ -1,0 +1,18 @@
+[
+    {
+        "A.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "P",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": false
+        }
+    }
+]

@@ -1,0 +1,30 @@
+{
+   librtmessage
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:rt_malloc_at
+   ...
+   fun:rtConnection_ReaderThread
+   fun:start_thread
+   fun:clone
+}
+
+{
+   subscribe
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:rt_malloc_at
+   fun:rbusMessage_FromBytes
+   fun:rbus_sendRequest
+   fun:rbus_invokeRemoteMethod2
+   fun:rbus_invokeRemoteMethod
+   fun:send_subscription_request
+   fun:rbus_subscribeToEventInternal
+   fun:rbus_subscribeToEventTimeout
+   fun:rbusEvent_SubscribeWithRetries
+   fun:rbusEvent_Subscribe
+   fun:amxb_rbus_subscribe
+}
+

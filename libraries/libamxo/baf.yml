@@ -1,0 +1,65 @@
+name: libamxo
+
+short_description: "Ambiorix Object Definition Language library"
+long_description: ""
+
+type: library
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/libraries/libamxo"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_LIB_AMXO:
+    super: True
+    default: y
+    type: bool
+    description: "Build libamxo"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  doc:
+    - directory: "doc"
+      target: "doc"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+artifacts:
+- source: "include/amxo/*.h"
+  destination: "$(INCLUDEDIR)/amxo/"
+  permissions: "0644"
+- source: "output/$(MACHINE)/$(COMPONENT).so.$(VERSION)"
+  destination: "$(LIBDIR)/$(COMPONENT).so.$(VERSION)"
+  permissions: "0644"
+  version: True
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxp"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  - name: "libamxs"
+    min: "*"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxp"
+  - name: "libamxd"
+  - name: "libamxs"
+  native:
+  - name: "bison"
+  - name: "flex"

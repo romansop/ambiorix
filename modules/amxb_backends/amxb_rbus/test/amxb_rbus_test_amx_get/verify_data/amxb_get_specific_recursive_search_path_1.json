@@ -1,0 +1,12 @@
+[{
+	"Device.SoftwareModules.ExecEnv.2.": {
+		"InitialExecutionUnitRunLevel": 0,
+		"CurrentRunLevel": -1,
+		"Status": "Disabled",
+		"Enable": false,
+		"Name": "DisabledTestEnv",
+		"Alias": "cpe-ExecEnv-2",
+		"InitialRunLevel": 1,
+		"Type": "TestType"
+	}
+}]

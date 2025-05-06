@@ -1,0 +1,31 @@
+{
+    "object": "Device.MQTT.Client.",
+    "index": 3,
+    "keys": {
+        "Alias": "cpe-Client-3"
+    },
+    "notification": "dm:instance-added",
+    "parameters": {
+        "ClientID": "",
+        "Username": "",
+        "Password": "",
+        "Status": "Disabled",
+        "CleanSession": true,
+        "BrokerAddress": "",
+        "ConnectRetryMaxInterval": 5120,
+        "Enable": false,
+        "ConnectRetryTime": 5,
+        "TransportProtocol": "TCP/IP",
+        "Name": "test-client-1",
+        "SubscriptionNumberOfEntries": 0,
+        "ProtocolVersion": 5.000000,
+        "CleanStart": true,
+        "ConnectRetryIntervalMultiplier": 2000,
+        "MessageRetryTime": 5,
+        "BrokerPort": 1883,
+        "Alias": "test-client-1",
+        "KeepAliveTime": 60,
+        "ResponseInformation": ""
+    },
+    "path": "Device.MQTT.Client."
+}

@@ -1,0 +1,10 @@
+[
+    {
+        "Device.SoftwareModules.ExecEnv.1.": {
+            "Enable": false
+        },
+        "Device.SoftwareModules.ExecEnv.2.": {
+            "Enable": false
+        }
+    }
+]

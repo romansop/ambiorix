@@ -1,0 +1,51 @@
+name: libamxc
+short_description: "library providing generic reusable data containers"
+long_description: ""
+
+type: library
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/libraries/libamxc"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_LIB_AMXC:
+    super: True
+    default: y
+    type: bool
+    description: "Build libamxc"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+doc:
+  parser: "amx"
+  doxygen: "doc/libamxc.doxy"
+
+artifacts:
+- source: "include/amxc/*.h"
+  destination: "$(INCLUDEDIR)/amxc/"
+  permissions: "0644"
+- source: "output/$(MACHINE)/$(COMPONENT).a"
+  destination: "$(LIBDIR)/$(COMPONENT).a"
+  permissions: "0644"
+- source: "output/$(MACHINE)/$(COMPONENT).so.$(VERSION)"
+  destination: "$(LIBDIR)/$(COMPONENT).so.$(VERSION)"
+  permissions: "0644"
+  version: True
+
+dependencies:

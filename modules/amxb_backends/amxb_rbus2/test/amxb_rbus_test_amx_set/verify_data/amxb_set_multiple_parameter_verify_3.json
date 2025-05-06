@@ -1,0 +1,14 @@
+[
+    {
+        "Device.SoftwareModules.ExecEnv.1.": {
+            "InitialExecutionUnitRunLevel": 100,
+            "CurrentRunLevel": -1,
+            "Status": "Up",
+            "Enable": false,
+            "Name": "TestEnv",
+            "Alias": "cpe-ExecEnv-1",
+            "InitialRunLevel": 20,
+            "Type": "TestType"
+        }
+    }
+]

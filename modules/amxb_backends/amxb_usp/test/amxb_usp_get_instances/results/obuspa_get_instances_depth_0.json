@@ -1,0 +1,10 @@
+[
+    {
+        "Device.Greeter.History.1.": {
+            "Alias": "default-msg"
+        },
+        "Device.Greeter.History.2.": {
+            "Alias": "story"
+        }
+    }
+]

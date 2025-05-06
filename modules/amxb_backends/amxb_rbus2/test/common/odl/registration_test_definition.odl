@@ -1,0 +1,62 @@
+%define {
+    object TopLevel {
+        string TLText;
+        uint32 TLUnsignedNumber;
+        int32 TLSignedNumber;
+        datetime TLTimeStamp;
+        %private string TLPrivateText;
+        %protected string TLProtectedText;
+        event 'TLEvent!';
+        void TLMethod();
+
+        %private object HiddenObject {
+            string HiddenText;
+        }
+
+        %protected object ProtectedObject {
+            string PText;
+        }
+
+        object Level1[] {
+            string L1Text;
+            uint16 L1UnsignedNumber;
+            int16 L1SignedNumber;
+            event 'L1Event!';
+            void L1Method();
+
+            object Level2A {
+                string L2AText;
+                uint8 L2AUnsignedNumber;
+                int8 L2ASignedNumber  {
+                    on action validate call check_range [-100, 100];
+                }
+                event 'L2AEvent!';
+                void L2AMethod();
+
+                object Level3[] {
+                    string L3Text;
+                    uint64 L3UnsignedNumber;
+                    int64 L3SignedNumber = 0 {
+                        on action validate call check_range [-10000, 10000];
+                    }
+                    event 'L3Event!';
+                    void L3Method();
+                }
+            }
+            object Level2B[] {
+                %unique %key string Alias;
+                string L2BText;
+                bool L2BBool;
+                event 'L2BEvent!';
+                void L2BMethod();
+            }
+            %read-only object Level2C[] { // consumers can not create or delete instances
+                on action del-inst call test_mod_always_fail_del_inst;
+                %unique %key string Alias;
+                %read-only string L2CText;
+                bool L2CBool;
+                double L2CDouble;
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+%define {
+    object Ethernet {
+        uint32 LinkNumberOfEntries;
+    }
+}

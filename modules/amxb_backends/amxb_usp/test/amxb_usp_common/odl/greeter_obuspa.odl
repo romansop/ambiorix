@@ -1,0 +1,107 @@
+%config {
+    backends = ['../mod-amxb-test-usp.so'];
+    listen = [ 'usp:/tmp/test.sock' ];
+    auto-connect = true;
+    auto-detect = false;
+
+    uris = [
+        "usp:/tmp/broker_controller_path"
+    ];
+
+    data-uris = [
+        "usp:/tmp/broker_agent_path"
+    ];
+
+    usp = {
+        EndpointID = "proto::test-plugin",
+        requires-device-prefix = true,
+        local-agent-dm = "../../odl/local-agent.odl",
+        translate = {
+            "'Greeter.'" = "Device.Greeter."
+        },
+        connect-retry = true
+    };
+}
+
+import "../test_mod/test_mod.so" as "test_mod";
+
+%define {
+    entry-point test_mod.test_mod_main;
+}
+
+%define {
+    %persistent object Greeter {
+        %persistent %read-only uint32 MaxHistory = 10 {
+            on action validate call check_minimum 1;
+        }
+
+        string State {
+            default "Idle";
+            on action validate call check_enum ["Idle", "Start", "Running", "Stop"];
+        }
+
+        uint32 test_out_args(%out string message, %out htable data);
+
+        %async uint32 test_out_args_deferred(%in uint32 time=5, %out string message, %out htable data);
+
+        %async uint32 print_message(%in string message);
+
+        void send_event(%in %mandatory variant data);
+
+        htable get_bus_stats_for(%in %mandatory string uri);
+
+        event 'MyEvent!' {
+            variant data;
+        }
+
+        // Note that History is not read-only for the tests, because having it writable
+        // is easier to test adds and deletes
+        %persistent object History[] {
+            counted with NumberOfHistoryEntries;
+
+            %unique %key string Alias;
+            
+            %persistent %read-only string From {
+                on action validate call check_maximum_length 64;
+            }
+
+            %persistent %read-only string Message {
+                on action validate call check_maximum_length 256;
+            }
+
+            %persistent bool Retain = false;
+
+            object Info[] {
+                counted with NumberOfInfoEntries;
+                %unique %key string Alias;
+                string Text = "";
+                uint32 Number = 0;
+                int32 SignedNumber = -100;
+                ssv_string Flags = "";
+                bool Disabled = false;
+                %volatile datetime UTC;
+                %volatile datetime Local;
+            }
+        }
+
+    }
+}
+
+%populate {
+    object Greeter.History {
+        instance add(0, "default-msg") {
+            parameter From = "Controller";
+            parameter Message = "Startup message";
+            parameter Retain = true;
+        }
+        instance add(0, "story") {
+            parameter From = "Storyteller";
+            parameter Message = "Once upon a time";
+            parameter Retain = true;
+
+            object Info {
+                instance add(0, "cpe-Info-1");
+            }
+        }
+    }
+}

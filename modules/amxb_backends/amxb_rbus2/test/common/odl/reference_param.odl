@@ -1,0 +1,16 @@
+ %config {
+    name = "reference-test";
+    backend-dir = "../";
+    rbus = {
+        use-amx-calls=false
+    };
+}
+
+%define {
+    object Device {
+        object TestObject {
+            string Reference = "TopLevel.Level1.1.Level2A.Level3.1";
+            csv_string References = "TopLevel.Level1.1.Level2A.Level3.1,TopLevel.Level1.1.Level2B.1";
+        }
+    }
+}

@@ -1,0 +1,6 @@
+%config {
+    listen = [
+        "pcb:/tmp/unit-test.sock",
+        "pcb:/tmp/unit-test-data.sock"
+    ];
+}

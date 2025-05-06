@@ -1,0 +1,31 @@
+%define {
+    %persistent object Phonebook {
+
+        // TODO - add RPC methods:
+        //     add_contact
+        //     save
+        //     load
+        //     CheckCredentials
+
+        %persistent object Contact[] {
+            %persistent string FirstName;
+            %persistent string LastName;
+            %persistent string Type = "Unknown" {
+                on action validate call check_enum
+                    ["Unknown", "Family", "Coworker", "Business", "Friend"];
+            }
+        }
+    }
+}
+
+include "contact_phone.odl";
+include "contact_email.odl";
+
+%populate { 
+    on event "dm:instance-added" call contact_added
+        filter 'path matches "^Phonebook\.Contact\.$"';
+ 
+    on event "dm:object-changed" call contact_type_changed
+        filter 'path in search_path("Phonebook.Contact.*") &&
+                contains("parameters.Type")';
+}

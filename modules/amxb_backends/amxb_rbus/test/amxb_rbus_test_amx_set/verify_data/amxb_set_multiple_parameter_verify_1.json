@@ -1,0 +1,14 @@
+[
+    {
+        "TopLevel.Level1.1.": {
+            "L1Text": "NewText-multiple",
+            "L1UnsignedNumber": 0,
+            "L1SignedNumber": 100
+        },
+        "TopLevel.Level1.1.Level2A.": {
+            "L2AText": "NewText-multiple",
+            "L2ASignedNumber": -10,
+            "L2AUnsignedNumber": 0
+        }
+    }
+]

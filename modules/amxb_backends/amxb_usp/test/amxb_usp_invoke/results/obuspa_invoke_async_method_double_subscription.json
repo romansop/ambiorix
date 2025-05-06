@@ -1,0 +1,4 @@
+{
+    "req_obj_path": "Device.LocalAgent.Request.1",
+    "executed_command": "Device.Greeter.test_out_args_deferred()"
+}

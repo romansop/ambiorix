@@ -1,0 +1,11 @@
+{
+    "object": "Device.MQTT.Client.1.",
+    "notification": "dm:object-changed",
+    "parameters": {
+        "ClientID": {
+            "from": "",
+            "to": "Darth Vader"
+        }
+    },
+    "path": "Device.MQTT.Client.1."
+}

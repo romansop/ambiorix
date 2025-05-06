@@ -1,0 +1,28 @@
+import "mod-dmext.so";
+import "phonebook.so";
+
+%define {
+    object Phonebook {
+        object Contact[] {
+            string FirstName;
+            string LastName;
+            // TODO: Add parameter "Type" and a validation action.
+  
+            object PhoneNumber[] {
+                string Phone = "" {
+                    on action validate call matches_regexp "^\(\+[0-9]{2,3}\)?([ 0-9]){8,16}$";
+                }
+            }
+  
+            object E-Mail[] {
+                string E-Mail = "" {
+                    on action validate call matches_regexp "^[[:graph:]]+@[[:graph:]]+\.[[:graph:]]+$";
+                }
+            }
+        }
+    }
+}
+
+%populate {
+    // TODO: Add the event callbacks using "on event " syntax.
+}

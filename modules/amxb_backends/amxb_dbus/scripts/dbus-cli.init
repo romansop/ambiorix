@@ -1,0 +1,33 @@
+!amx silent true
+
+#                   _  ___  ____
+#  _ __  _ __ _ __ | |/ _ \/ ___|
+# | '_ \| '__| '_ \| | | | \___ \
+# | |_) | |  | |_) | | |_| |___) |
+# | .__/|_|  | .__/|_|\___/|____/
+# |_|        |_| based on OpenWrt
+# -----------------------------------------------------
+# dbus - cli
+# -----------------------------------------------------
+
+!amx variable cli-name = "dbus-cli"
+!amx variable dbus = { destination-prefix = "org.prpl.dm.", dm-interface="org.prpl.amx" }
+!addon load mod_ba /usr/lib/amx/amx-cli/mod-ba-cli.so
+backend add /usr/bin/mods/amxb/mod-amxb-dbus.so
+connection open dbus:
+!addon select mod_ba cli
+
+!amx variable acl-enabled=false
+!amx variable acl-dir="/cfg/etc/acl/"
+
+!amx alias printenv "!amx variable"
+!amx alias setenv "!amx variable"
+!amx alias exit "!amx exit"
+!amx alias quit "!amx exit"
+!amx alias protected "!addon select mod_ba; connection access dbus: protected;!addon select mod_ba cli"
+!amx alias public "!addon select mod_ba; connection access dbus: public; !addon select mod_ba cli"
+
+!history clear
+!history load /tmp/dbus_cli.history
+
+!amx silent false

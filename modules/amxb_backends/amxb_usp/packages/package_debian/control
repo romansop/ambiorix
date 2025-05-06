@@ -1,0 +1,11 @@
+Source: mod-amxb-usp
+Section: devel
+Priority: optional
+Maintainer: Johan Jacobs <johan.jacobs_ext@softathome.com>
+
+Package: mod-amxb-usp
+Architecture: amd64
+Depends: ${shlibs:Depends}
+Description: USP backend implementation for amxb
+  USP Backend
+ 

@@ -1,0 +1,13 @@
+%config {
+    daemon = false;
+
+    ubus = {
+        watch-ubus-events = true
+    };
+}
+
+import "${name}.so" as "${name}";
+
+%define {
+    entry-point dmtui.dmtui_main;
+}

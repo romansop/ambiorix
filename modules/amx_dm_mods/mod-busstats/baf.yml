@@ -1,0 +1,59 @@
+name: mod-busstats
+
+short_description: "Bus statistics"
+long_description: ""
+
+type: module
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/modules/amx_dm_mods/mod-busstats"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_MOD_BUSSTATS:
+    super: True
+    default: y
+    type: bool
+    description: "Build bus statistics module"
+
+makefiles:
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+artifacts:
+- source: "output/$(MACHINE)/$(COMPONENT).so"
+  destination: "/usr/lib/amx/modules/$(COMPONENT).so"
+  permissions: "0644"
+  version: False
+- source: "odl/mod_busstats.odl"
+  destination: "/etc/amx/modules/mod_busstats.odl"
+  permissions: "0644"
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  - name: "libamxb"
+    min: "*"
+  - name: "libamxo"
+    min: "*"
+  - name: "libsahtrace"
+    min: "*"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxd"
+  - name: "libamxb"

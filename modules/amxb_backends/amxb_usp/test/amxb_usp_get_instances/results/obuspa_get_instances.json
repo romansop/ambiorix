@@ -1,0 +1,13 @@
+[
+    {
+        "Device.Greeter.History.1.": {
+            "Alias": "default-msg"
+        },
+        "Device.Greeter.History.2.": {
+            "Alias": "story"
+        },
+        "Device.Greeter.History.2.Info.1.": {
+            "Alias": "cpe-Info-1"
+        }
+    }
+]

@@ -1,0 +1,11 @@
+Source: mod-amxb-rbus
+Section: devel
+Priority: optional
+Maintainer: oleksandr.remez <oleksandr.remez@globallogic.com>
+
+Package: mod-amxb-rbus
+Architecture: amd64
+Depends: ${shlibs:Depends}
+Description: RBUS backend implementation for amxb
+  RBUSBackend
+ 

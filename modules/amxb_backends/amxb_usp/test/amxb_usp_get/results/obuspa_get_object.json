@@ -1,0 +1,33 @@
+[
+    {
+        "Device.Greeter.History.1.": {
+            "Message": "Startup message",
+            "Retain": true,
+            "From": "Controller",
+            "Alias": "default-msg",
+            "NumberOfInfoEntries": 0
+        },
+        "Device.Greeter.History.2.": {
+            "Message": "Once upon a time",
+            "Retain": true,
+            "From": "Storyteller",
+            "Alias": "story",
+            "NumberOfInfoEntries": 1
+        },
+        "Device.Greeter.History.2.Info.1.": {
+            "Text": "",
+            "Disabled": false,
+            "Number": 0,
+            "SignedNumber": -100,
+            "Local": "0001-01-01T00:00:00Z",
+            "Alias": "cpe-Info-1",
+            "UTC": "0001-01-01T00:00:00Z",
+            "Flags": ""
+        },
+        "Device.Greeter.": {
+            "MaxHistory": 10,
+            "NumberOfHistoryEntries": 2,
+            "State": "Idle"
+        }
+    }
+]

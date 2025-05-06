@@ -1,0 +1,98 @@
+name: libamxrt
+
+short_description: "Ambiorix Run Time API"
+long_description: ""
+
+type: library
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/libraries/libamxrt"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_LIB_AMXRT:
+    super: True
+    default: y
+    type: bool
+    description: "Build libamxrt"
+    select:
+      - KERNEL_EXT4_FS_SECURITY if USES_EXT4 || PACKAGE_kmod-fs-ext4
+      - KERNEL_JFFS2_FS_SECURITY if USES_JFFS2 || USES_JFFS2_NAND
+      - KERNEL_UBIFS_FS_SECURITY if USES_UBIFS
+      - KERNEL_F2FS_FS_SECURITY if PACKAGE_mkf2fs
+  CONFIG_SAH_AMXRT_RWDATAPATH:
+    super: False
+    default: "/etc/config"
+    type: string
+    description: "Persistent storage location"
+  CONFIG_FORCE_RUNNING_AS_ROOT:
+    super: False
+    default: y
+    type: bool
+    description: "INSECURE: This options forces ambiorix components to run as the root user, even if they request to run as a different user"
+  CONFIG_REMOVE_CAPS_ODLS:
+    super: False
+    default: y
+    type: bool
+    description: "INSECURE: This option removes all the capability ODLs (*_caps.odl) from /etc/amx and subdirectories during first boot. This will also force all components to run as root"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  doc:
+    - directory: "doc"
+      target: "doc"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+artifacts:
+- source: "include/amxrt/*.h"
+  destination: "$(INCLUDEDIR)/amxrt/"
+  permissions: "0644"
+- source: "output/$(MACHINE)/$(COMPONENT).so.$(VERSION)"
+  destination: "$(LIBDIR)/$(COMPONENT).so.$(VERSION)"
+  permissions: "0644"
+  version: True
+- source: "scripts/remove_cap_files.sh"
+  destination: "/etc/uci-defaults/15_remove_cap_files.sh"
+  permissions: "0775"
+  only: CONFIG_REMOVE_CAPS_ODLS
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxj"
+    min: "*"
+  - name: "libamxp"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  - name: "libamxo"
+    min: "*"
+  - name: "libamxb"
+    min: "*"
+  - name: "libevent"
+    min: "*"
+  - name: "libcap-ng"
+    min: "gen_v0.8.2_v0.3.0"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxj"
+  - name: "libamxp"
+  - name: "libamxd"
+  - name: "libamxo"
+  - name: "libamxb"
+  - name: "libevent"
+  - name: "libcap-ng"

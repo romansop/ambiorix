@@ -1,0 +1,6 @@
+*.swp
+**/output/*
+**/run_test
+libamxut-*.*
+libamxut_*.*
+test/**/*.json

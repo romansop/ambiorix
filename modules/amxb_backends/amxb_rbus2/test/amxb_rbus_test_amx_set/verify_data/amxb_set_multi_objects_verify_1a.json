@@ -1,0 +1,24 @@
+[
+    {
+        "Device.SoftwareModules.ExecEnv.1.": {
+            "InitialExecutionUnitRunLevel": 100,
+            "CurrentRunLevel": -1,
+            "Status": "Up",
+            "Enable": false,
+            "Name": "TestEnv",
+            "Alias": "cpe-ExecEnv-1",
+            "InitialRunLevel": 40,
+            "Type": "TestType"
+        },
+        "Device.SoftwareModules.ExecEnv.2.": {
+            "InitialExecutionUnitRunLevel": 0,
+            "CurrentRunLevel": -1,
+            "Status": "Disabled",
+            "Enable": false,
+            "Name": "DisabledTestEnv",
+            "Alias": "cpe-ExecEnv-2",
+            "InitialRunLevel": 40,
+            "Type": "TestType"
+        }
+    }
+]

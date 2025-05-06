@@ -1,0 +1,221 @@
+[
+    {
+        "TopLevel.Level1.{i}.Level2B.{i}.": {
+            "supported_events": {
+                "amx_notify!": [],
+                "L2BEvent!": []
+            },
+            "supported_commands": [
+                {
+                    "command_type": 0,
+                    "output_arg_names": [],
+                    "input_arg_names": [],
+                    "command_name": "L2BMethod()"
+                }
+            ],
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2BBool",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2BText",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Alias",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.": {
+            "supported_events": {
+                "amx_notify!": [],
+                "TLEvent!": []
+            },
+            "supported_commands": [
+                {
+                    "command_type": 0,
+                    "output_arg_names": [],
+                    "input_arg_names": [],
+                    "command_name": "TLMethod()"
+                }
+            ],
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "TLUnsignedNumber",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "TLTimeStamp",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "TLSignedNumber",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "TLText",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": false
+        },
+        "TopLevel.Level1.{i}.Level2A.": {
+            "supported_events": {
+                "L2AEvent!": [],
+                "amx_notify!": []
+            },
+            "supported_commands": [
+                {
+                    "command_type": 0,
+                    "output_arg_names": [],
+                    "input_arg_names": [],
+                    "command_name": "L2AMethod()"
+                }
+            ],
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2AText",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2ASignedNumber",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2AUnsignedNumber",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": false
+        },
+        "TopLevel.Level1.{i}.Level2C.{i}.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2CBool",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2CDouble",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L2CText",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Alias",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.Level1.{i}.": {
+            "supported_events": {
+                "amx_notify!": [],
+                "L1Event!": []
+            },
+            "supported_commands": [
+                {
+                    "command_type": 0,
+                    "output_arg_names": [],
+                    "input_arg_names": [],
+                    "command_name": "L1Method()"
+                }
+            ],
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L1Text",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L1UnsignedNumber",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L1SignedNumber",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.Level1.{i}.Level2A.Level3.{i}.": {
+            "supported_events": {
+                "amx_notify!": [],
+                "L3Event!": []
+            },
+            "supported_commands": [
+                {
+                    "command_type": 0,
+                    "output_arg_names": [],
+                    "input_arg_names": [],
+                    "command_name": "L3Method()"
+                }
+            ],
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L3Text",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L3UnsignedNumber",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L3SignedNumber",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        }
+    }
+]

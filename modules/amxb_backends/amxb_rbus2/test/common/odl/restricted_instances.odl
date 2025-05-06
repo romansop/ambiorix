@@ -1,0 +1,44 @@
+import "../test_mod/test_mod.so" as "test_mod";
+
+%config {
+    name = "registration-test";
+    backend-dir = "../";
+    rbus = {
+        use-amx-calls=false
+    };
+    import-dbg = true;
+}
+
+%define {
+    object Restricted {
+        %read-only object ROObject[] {
+            %unique %key string Alias;
+            string Text;
+        }
+
+        object LimitedInstances[2] {
+            on action del-inst call test_mod_always_fail_del_inst;
+            %unique %key string Alias;
+            string Text;
+        }
+    }
+}
+
+%populate {
+    object Restricted.ROObject {
+        instance add();
+        instance add();
+    }
+    object Restricted.LimitedInstances {
+        instance add() {
+            parameter Text = "Instance 1";
+        }
+        instance add() {
+            parameter Text = "Instance 2";
+        }
+    }
+}
+
+%define {
+    entry-point test_mod.test_mod_main;
+}

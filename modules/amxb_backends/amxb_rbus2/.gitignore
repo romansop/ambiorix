@@ -1,0 +1,10 @@
+**/output/*
+**/run_test
+test/common/test_mod/*.o
+test/common/test_mod/*.d
+test/common/test_mod/*.so
+test/common/test_client/*.o
+test/common/test_client/*.d
+test/common/test_client/*.so
+mod-amxb-*.*
+include_priv/amxb_rbus_version.h

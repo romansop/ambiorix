@@ -1,0 +1,26 @@
+%define {
+    object Device {
+        %read-only string RootDataModelVersion = "2.16";
+    }
+}
+
+%config {
+    backends = [ "../mod-amxb-test-usp.so" ];
+    listen = [ "usp:/tmp/test-device.sock" ];
+    uris = [ "usp:/tmp/test.sock" ];
+    auto-connect = true;
+    auto-detect = false;
+
+    proxy-object = {
+        "'Device.'" = "",
+        "'Device.MQTT.'" = "MQTT."
+    };
+    usp.EndpointID = "proto::tr181-device";
+    usp.requires-device-prefix = false;
+}
+
+import "mod-dmproxy.so" as "proxy";
+
+%define {
+    entry-point proxy.dm_proxy_main;
+}

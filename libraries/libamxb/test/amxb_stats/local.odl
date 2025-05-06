@@ -1,0 +1,7 @@
+%define {
+    object SomeLocalObject {
+        object TestObject {
+            string Text = "Hello World";
+        }
+    }
+}

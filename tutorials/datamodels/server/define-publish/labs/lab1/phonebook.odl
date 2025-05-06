@@ -1,0 +1,8 @@
+%define {
+    object Phonebook {
+        object Contact[] {
+            string FirstName;
+            string LastName;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+ %populate {
+    object WiFi.DataElements.Network.SSID {
+        instance add(0, "wl0");
+        instance add(0, "wl1");
+    }
+
+    object WiFi.DataElements.Network.Group {
+        instance add(0, "group-A");
+        instance add(0, "group-B");
+    }
+}

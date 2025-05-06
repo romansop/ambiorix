@@ -1,0 +1,5 @@
+%define {
+    /** A remote object that is reachable through the bus that returns error on almost every operation. */
+    object SomeRemoteObjectForErrorBus2 {
+    }
+}

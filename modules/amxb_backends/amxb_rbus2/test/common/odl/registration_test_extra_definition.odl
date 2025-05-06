@@ -1,0 +1,8 @@
+%define {
+    select TopLevel.Level1.Level2A.Level3 {
+        object Extra {
+            string ExtraText;
+            uint32 ExtraNumber;
+        }
+    }
+}

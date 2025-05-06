@@ -1,0 +1,84 @@
+name: mod-amxb-usp
+short_description: "USP backend implementation for amxb"
+long_description: ""
+
+type: module
+category: other
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/modules/amxb_backends/amxb_usp"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_MOD_AMXB_USP:
+    super: True
+    default: y
+    type: bool
+    description: "Build the USP backend for ambiorix"
+  CONFIG_SAH_MOD_AMXB_USP_INSTALL_DIR:
+    default: "/usr/bin/mods/usp"
+    type: string
+    description: "Installation directory for the USP backend"
+  CONFIG_SAH_MOD_AMXB_USP_REQUIRES_DEVICE_PREFIX:
+    default: n
+    type: bool
+    description: "System wide default value for requires-device-prefix, which can be overwritten at odl level"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  test:
+    - directory: "test/obuspa"
+      target: all
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+artifacts:
+- source: "output/$(MACHINE)/$(COMPONENT).so"
+  destination: "$(CONFIG_SAH_MOD_AMXB_USP_INSTALL_DIR)/$(COMPONENT).so"
+  permissions: "0644"
+  version: False
+- source: "odl/local-agent.odl"
+  destination: "/etc/amx/modules/usp/local-agent.odl"
+  permissions: "0644"
+
+doc:
+  odl:
+    - "none"
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxp"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  - name: "libamxb"
+    min: "*"
+  - name: "libamxo"
+    min: "*"
+  - name: "libimtp"
+    min: "*"
+  - name: "libusp"
+    min: "*"
+  - name: "libuspi"
+    min: "*"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxp"
+  - name: "libamxd"
+  - name: "libamxb"
+  - name: "libamxo"
+  - name: "libimtp"
+  - name: "libusp"
+  - name: "libuspi"

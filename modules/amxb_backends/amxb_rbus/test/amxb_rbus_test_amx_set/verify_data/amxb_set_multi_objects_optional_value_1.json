@@ -1,0 +1,30 @@
+[
+    {
+        "result": {
+            "Device.SoftwareModules.ExecEnv.1.": {
+                "Enable": false,
+                "InitialRunLevel": 70
+            },
+            "Device.SoftwareModules.ExecEnv.2.": {
+                "Enable": false,
+                "InitialRunLevel": 70
+            }
+        },
+        "status": 0,
+        "path": "Device.SoftwareModules.ExecEnv.*."
+    },
+    {
+        "result": {
+            "TopLevel.Level1.1.Level2A.": {
+                "L2AText": "TestingPartial-optional",
+                "L2ASignedNumber": {
+                    "error_code": 10,
+                    "required": false
+                },
+                "L2AUnsignedNumber": 200
+            }
+        },
+        "status": 0,
+        "path": "TopLevel.Level1.1.Level2A."
+    }
+]

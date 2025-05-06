@@ -1,0 +1,53 @@
+import "mod-dmext.so";
+import "phonebook.so" as "phonebook";
+
+%define {
+    mib Coworker {
+        string Department = "" {
+            on action validate call check_maximum_length 64;
+        }
+        string Team = "" {
+            on action validate call check_maximum_length 64;
+        }
+    }
+
+    // TODO: add mibs - one for each contact type
+}
+
+%define {
+    object Phonebook {
+        object Contact[] {
+            string FirstName;
+            string LastName;
+            string Type = "Unknown" {
+                on action validate call check_enum
+                    ["Unknown", "Family", "Coworker", "Business", "Friend"];
+            }
+   
+            object PhoneNumber[] {
+                string Phone = "" {
+                    on action validate call matches_regexp "^\(\+[0-9]{2,3}\)?([ 0-9]){8,16}$";
+                }
+            }
+   
+            object E-Mail[] {
+                string E-Mail = "" {
+                    on action validate call matches_regexp "^[[:graph:]]+@[[:graph:]]+\.[[:graph:]]+$";
+                }
+            }
+        }
+    }
+}
+ 
+%populate { 
+    on event "dm:instance-added" call contact_added
+        filter 'path matches "^Phonebook\.Contact\.$"';
+ 
+    on event "dm:object-changed" call contact_type_changed
+        filter 'path in search_path("Phonebook.Contact.*") &&
+                contains("parameters.Type")';
+}
+
+%define {
+    entry-point phonebook.phonebook_main;
+}

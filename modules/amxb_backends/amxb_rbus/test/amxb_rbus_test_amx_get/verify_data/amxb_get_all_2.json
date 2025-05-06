@@ -1,0 +1,34 @@
+[{
+	"TopLevel.Level1.1.Level2A.Level3.1.": {
+		"L3Text": "",
+		"L3UnsignedNumber": 0,
+		"L3SignedNumber": 0
+	},
+	"TopLevel.Level1.1.": {
+		"L1Text": "",
+		"L1UnsignedNumber": 0,
+		"L1SignedNumber": 0
+	},
+	"TopLevel.Level1.1.Level2B.1.": {
+		"L2BBool": false,
+		"L2BText": "",
+		"Alias": "cpe-Level2B-1"
+	},
+	"TopLevel.": {
+		"TLUnsignedNumber": 0,
+		"TLText": "",
+		"TLTimeStamp":"0001-01-01T00:00:00Z",
+		"TLSignedNumber": 0
+	},
+	"TopLevel.Level1.1.Level2C.1.": {
+		"L2CBool": false,
+		"L2CDouble": 0.000000,
+		"Alias": "cpe-Level2C-1",
+		"L2CText": ""
+	},
+	"TopLevel.Level1.1.Level2A.": {
+		"L2AText": "",
+		"L2ASignedNumber": 0,
+		"L2AUnsignedNumber": 0
+	}
+}]

@@ -1,0 +1,51 @@
+{
+    "Device.SoftwareModules.NoneExisting.*.": {
+        "result": [
+            {}
+        ],
+        "status": 2
+    },
+    "Device.SoftwareModules.ExecEnvClass.[Name=='TestEnvClass'].": {
+        "result": [
+            {
+                "Device.SoftwareModules.ExecEnvClass.1.Capability.1.": {
+                    "SpecificationVersion": "1.0.1",
+                    "Specification": "TestSpecification",
+                    "SpecificationURI": "https://test.com/test_uri"
+                },
+                "Device.SoftwareModules.ExecEnvClass.1.": {
+                    "CapabilityNumberOfEntries": 1,
+                    "Name": "TestEnvClass",
+                    "Alias": "cpe-ExecEnvClass-1",
+                    "Version": "1.0.0",
+                    "Vendor": "TestVendor",
+                    "DeploymentUnitRef": "TestRef"
+                }
+            }
+        ],
+        "status": 0
+    },
+    "TopLevel.Level1.*.Level2A.": {
+        "result": [
+            {
+                "TopLevel.Level1.1.Level2A.Level3.1.": {
+                    "L3Text": "",
+                    "L3UnsignedNumber": 0,
+                    "L3SignedNumber": 0
+                },
+                "TopLevel.Level1.1.Level2A.": {
+                    "L2AText": "",
+                    "L2ASignedNumber": 0,
+                    "L2AUnsignedNumber": 0
+                }
+            }
+        ],
+        "status": 0
+    },
+    "TopLevel.Level1.[Level2A.L2AText==''].Level2A.Level3.*.FakeParam": {
+        "result": [
+            {}
+        ],
+        "status": 4
+    }
+}

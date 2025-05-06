@@ -1,0 +1,175 @@
+%define {
+    object Device {
+        object LocalAgent {
+            
+            /**
+            * Comma-separated list of strings, each entry is a threshold operation for Threshold.{i}.ThresholdOperator supported 
+            * by the Agent.
+            * Each list item is an enumeration of:
+
+            * * Rise (Parameter value changes from below the Threshold.{i}.ThresholdValue to a value above)
+            * * Fall (Parameter value changes from above the Threshold.{i}.ThresholdValue to a value below)
+            * * Cross (Parameter value either changes from above the Threshold.{i}.ThresholdValue to a value below or vice versa)
+            * * Eq (Parameter value changes from any value to the Threshold.{i}.ThresholdValue)
+            * * NotEq (Parameter value changes from the Threshold.{i}.ThresholdValue to any other value) 
+            * @version 1.0
+            */
+            %read-only csv_string SupportedThresholdOperator = "Rise,Fall,Eq,NotEq,Cross";
+
+            object Subscription[] {
+                on action add-inst call la_create_subscription;
+
+                counted with SubscriptionNumberOfEntries;
+ 
+                %unique %key string Alias;
+                bool Enable;
+                %key string Recipient;
+                %key string ID;
+                string TriggerAction = "Notify" {
+                    on action validate call check_enum [ "Notify", "Config", "NotifyAndConfig" ];
+                }
+                %read-only csv_string TriggerConfigSettings;
+                %read-only datetime CreationDate;
+                string NotifType = "ValueChange" {
+                    on action validate call check_enum [ "ValueChange", "ObjectCreation", "ObjectDeletion", "OperationComplete", "Event" ];
+                }
+                csv_string ReferenceList {
+                    on action destroy call la_cleanup_matching;
+                }
+                bool Persistent;
+                uint32 TimeToLive;
+                bool NotifRetry;
+                uint32 NotifExpiration;
+            }
+            object Request[] {
+                %unique %key string Alias;
+                %key string Originator;
+                %key string Command;
+                %key string CommandKey;
+                %read-only string Status = "Requested" {
+                    on action validate call check_enum [ "Requested", "Active", "Canceling", "Canceled", "Success", "Error" ];
+                }
+            }
+            object Controller[] {
+                counted with ControllerNumberOfEntries;
+    
+                %unique %key string Alias;
+                %unique %key string EndpointID;
+                string ControllerCode;
+                string ProvisioningCode;
+                bool Enable;
+                csv_string AssignedRole;
+                %read-only csv_string InheritedRole;
+                csv_string Credential;
+                uint32 PeriodicNotifInterval {
+                    default 60;
+                    on action validate call check_minimum 1;
+                }
+                datetime PeriodicNotifTime;
+                uint32 USPNotifRetryMinimumWaitInterval = 5;
+                uint32 USPNotifRetryIntervalMultiplier = 2000;
+            }
+            /**
+            * Each instance of this table represents a Threshold Event that is triggered by a threshold test.
+            * For example:
+            * ReferencePath: Device.Ethernet.[Enable==1].Stats.
+            * ThresholdParam: BytesSent
+            * ThresholdOperator: Rise
+            * ThresholdValue: 100000
+            * Would trigger a Triggered! Event whenever a value of a parameter matching Device.Ethernet.[Enable==1].Stats.BytesSent rises from below to above 100000.
+            * At most one entry in this table can exist with a given value for Alias. On creation of a new table entry, 
+            * the Agent MUST choose an initial value for Alias such that the new entry does not conflict with any existing entries.
+            * The non-functional key parameter Alias is immutable and therefore MUST NOT change once it's been assigned.
+            * @version 1.0
+            */
+            %persistent object Threshold[] {
+                counted with ThresholdNumberOfEntries;
+                on action add-inst call la_threshold_create;
+                on action validate call la_threshold_instance_is_valid;
+                on action destroy call la_threshold_instance_cleanup;
+            
+                /**
+                * [Alias] A non-volatile unique key used to reference this instance.
+                * Alias provides a mechanism for a Controller to label this instance for future reference.
+                * The following mandatory constraints MUST be enforced:
+                * The value MUST NOT be empty.
+                * The value MUST start with a letter.
+                * If the value is not assigned by the Controller at creation time, the Agent MUST assign a value with an "cpe-" prefix. 
+                * The value MUST NOT change once it's been assigned.
+                * @version 1.0
+                */
+                %unique %key %persistent string Alias;
+
+                /**
+                * Enable/Disable this Threshold instance.
+                * If the Threshold instance is disabled, the Triggered! Event will not be invoked, even if there is a LocalAgent.Subscription.{i}.
+                * instance that references it
+                * @version 1.0
+                */
+                %persistent bool Enable = false;
+    
+                /**
+                * Determines whether to disable this Threshold instance after the Triggered! Event has been invoked. Enumeration of:
+                * * Normal (The Threshold will generate events as long as the Enable is true)
+                * * Single (After invoking the Triggered! Event, the Enable parameter will be automatically set to false) 
+                * @version 1.0
+                */
+                %persistent string OperatingMode {
+                    on action validate call check_enum [ "Normal", "Single" ];
+                    default "Normal";
+                }
+
+                /**
+                * The combination of ReferencePath and ThresholdParam create the reference to the parameter being checked for the threshold test.
+                * ReferencePath can be either an Object Path or a Search Path.
+                * @version 1.0
+                */
+                %persistent string ReferencePath;
+
+                /**
+                * The combination of ReferencePath and ThresholdParam create the reference to the parameter being checked for the threshold test.
+                * ThresholdParam is the name of the Parameter in the context of ReferencePath.
+                * @version 1.0
+                */
+                %persistent string ThresholdParam;
+
+                /**
+                * The value MUST be a member of the list reported by the Device.LocalAgent.SupportedThresholdOperator parameter.
+                * The operator used for the threshold test.
+                * @version 1.0
+                */
+                %persistent string ThresholdOperator {
+                    on action validate call check_is_in "Device.LocalAgent.SupportedThresholdOperator";
+                    default "Rise";
+                }
+
+                /**
+                * The Value used for the threshold test.
+                * @version 1.0
+                */
+                %persistent string ThresholdValue;
+
+                event "Triggered!" {
+                    string ParamPath;
+                    string ParamValue;
+                }
+            }
+        }
+    }
+}
+
+%populate {
+    on event "dm:instance-added" call la_subscription_added
+        filter 'path == "Device.LocalAgent.Subscription."';
+
+    on event "dm:object-changed" call la_request_remove
+        filter 'path matches "^Device\.LocalAgent\.Request\.[0-9]+\.$" &&
+                (parameters.Status.to == "Success" ||
+                 parameters.Status.to == "Error")';
+
+    on event "dm:object-changed" call la_threshold_changed
+        filter 'object starts with "Device.LocalAgent.Threshold."';
+
+    on event "dm:instance-added" call la_threshold_added
+        filter 'path == "Device.LocalAgent.Threshold."';
+}

@@ -1,0 +1,10 @@
+%config {
+    name = "registration-test";
+    backend-dir = "../";
+    rbus = {
+        use-amx-calls=true
+    };
+}
+
+include "registration_test_definition.odl";
+include "registration_test_instances.odl";

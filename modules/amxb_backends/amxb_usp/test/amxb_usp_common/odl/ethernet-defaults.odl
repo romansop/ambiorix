@@ -1,0 +1,9 @@
+%populate {
+    object Ethernet.Interface {
+        instance add (1, "eth0", Name = "eth0") {
+            parameter Enable = true;
+            parameter MACAddress = "AA:BB:CC:DD:EE:FF";
+            parameter MaxBitRate = 1024;
+        }
+    }
+}

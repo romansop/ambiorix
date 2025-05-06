@@ -1,0 +1,8 @@
+[
+    {
+        "Device.SoftwareModules.ExecEnvClass.1.Capability.1.": {},
+        "Device.SoftwareModules.ExecEnvClass.1.": {
+            "Alias": "cpe-ExecEnvClass-1"
+        }
+    }
+]

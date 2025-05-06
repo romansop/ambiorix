@@ -1,0 +1,29 @@
+%define {
+    %persistent object Scheduler {
+
+        %persistent object Task[] {
+            %persistent %unique %key string Alias;
+            %persistent bool Enable = false;
+            %persistent string Second = "*";
+            %persistent string Minute = "*";
+            %persistent string Hour = "*";
+            %persistent string Month = "*";
+            %persistent string DayOfMonth = "*";
+            %persistent string DayOfWeek = "*";
+            %persistent uint32 Duration = 0;
+            %read-only string Status = "";
+        }
+    }
+}
+
+%populate {
+    on event "dm:instance-added" call task_added
+        filter 'path == "Scheduler.Task."';
+
+    on event "dm:instance-removed" call task_deleted
+        filter 'path == "Scheduler.Task."';
+
+    on event "dm:object-changed" call task_changed
+        filter 'path matches "Scheduler\.Task\.[0-9]+\." &&
+                not contains("parameters.Status")';
+}

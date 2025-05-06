@@ -1,0 +1,14 @@
+[{
+	"Device.SoftwareModules.": {
+		"ExecEnvClassNumberOfEntries": 1
+	},
+	"Device.TestDescribe.": {
+		"Enable": false,
+		"InitialExecutionUnitRunLevel": 0,
+		"CurrentRunLevel": 0,
+		"Name": "",
+		"Status": "",
+		"InitialRunLevel": 0,
+		"Type": ""
+	}
+}]

@@ -1,0 +1,10 @@
+ %define {
+    select 'Device.TestEvents' {
+        object SubObject {
+            string Text;
+
+            event 'TestEvent!';
+            void test_send_event();
+        }
+    }
+}

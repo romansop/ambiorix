@@ -1,0 +1,8 @@
+**/output/*
+**/run_test
+*.deb
+*.tar.gz
+*.gcno
+core
+vgcore.*
+test/*.so

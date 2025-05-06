@@ -1,0 +1,12 @@
+{
+    "object": "Device.Greeter.History.",
+    "index": 1,
+    "keys": {
+
+    },
+    "notification": "dm:instance-removed",
+    "parameters": {
+
+    },
+    "path": "Device.Greeter.History."
+}

@@ -1,0 +1,19 @@
+[
+    {
+        "parameters": {
+            "Enable": true,
+            "InitialRunLevel": 80
+        },
+        "path": "Device.SoftwareModules.ExecEnv.*."
+    },
+    {
+        "parameters": {
+            "L2AText": "TestingPartial-optional-2",
+            "L2AUnsignedNumber": 15
+        },
+        "oparameters": {
+            "L2ASignedNumber": 50
+        },
+        "path": "TopLevel.Level1.1.Level2A."
+    }
+]

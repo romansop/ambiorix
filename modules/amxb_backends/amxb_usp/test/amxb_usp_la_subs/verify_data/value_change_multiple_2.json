@@ -1,0 +1,11 @@
+{
+    "object": "Device.MQTT.Client.1.",
+    "notification": "dm:object-changed",
+    "parameters": {
+        "KeepAliveTime": {
+            "from": "",
+            "to": "20"
+        }
+    },
+    "path": "Device.MQTT.Client.1."
+}

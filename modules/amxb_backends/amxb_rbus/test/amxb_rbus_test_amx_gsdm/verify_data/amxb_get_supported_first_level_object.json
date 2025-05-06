@@ -1,0 +1,51 @@
+[
+    {
+        "TopLevel.Level1.{i}.Level2B.{i}.": {
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.Level1.{i}.Level2A.": {
+            "is_multi_instance": false
+        },
+        "TopLevel.Level1.{i}.Level2C.{i}.": {
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.Level1.{i}.": {
+            "supported_events": {
+                "amx_notify!": [],
+                "L1Event!": []
+            },
+            "supported_commands": [
+                {
+                    "command_type": 0,
+                    "output_arg_names": [],
+                    "input_arg_names": [],
+                    "command_name": "L1Method()"
+                }
+            ],
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L1Text",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L1UnsignedNumber",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "L1SignedNumber",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        }
+    }
+]

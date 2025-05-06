@@ -1,0 +1,76 @@
+name: mod-amxb-ubus
+
+short_description: "Ubus Backend"
+long_description: ""
+
+type: module
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/modules/amxb_backends/amxb_ubus"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_LIB_AMXB_UBUS:
+    super: True
+    default: y
+    type: bool
+    description: "Build ubus backend for ambiorix"
+  CONFIG_SAH_LIB_AMXB_UBUS_ORDER:
+    default: "05-"
+    type: string
+    description: "Backend load order"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+artifacts:
+- source: "include/amxb_be_ubus/*.h"
+  destination: "$(INCLUDEDIR)/amxb_be_ubus/"
+  permissions: "0644"
+- source: "output/$(MACHINE)/$(COMPONENT).so"
+  destination: "/usr/bin/mods/amxb/$(CONFIG_SAH_LIB_AMXB_UBUS_ORDER)$(COMPONENT).so"
+  permissions: "0644"
+  version: False
+- source: "output/$(MACHINE)/$(COMPONENT).so"
+  destination: "$(LIBDIR)/libamxb_ubus.so.$(VERSION)"
+  permissions: "0644"
+  version: True
+- source: "/usr/bin/mods/amxb/$(CONFIG_SAH_LIB_AMXB_UBUS_ORDER)$(COMPONENT).so"
+  destination: "/usr/bin/mods/amxb/$(COMPONENT).so"
+  symbolic: "True"
+- source: "scripts/forward_ubus_client.sh"
+  destination: "$(BINDIR)/forward_ubus_client.sh"
+  permissions: "0755"
+- source: "scripts/forward_ubus_server.sh"
+  destination: "$(BINDIR)/forward_ubus_server.sh"
+  permissions: "0755"
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxb"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  - name: "ubus"
+    min: "gen_ad0cd117_v1.0.0"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxb"
+  - name: "libamxd"
+  - name: "ubus"

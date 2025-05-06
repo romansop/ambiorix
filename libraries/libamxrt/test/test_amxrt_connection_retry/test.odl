@@ -1,0 +1,6 @@
+%config {
+    auto-detect = false;
+    uris = [ "pcb:/tmp/unit-test.sock" ];
+    data-uris = [ "pcb:/tmp/unit-test-data.sock" ];
+    pcb.connect-retry = true;
+}

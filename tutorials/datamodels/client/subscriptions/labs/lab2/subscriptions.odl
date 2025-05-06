@@ -1,0 +1,12 @@
+#!/usr/bin/amxrt
+
+%config {
+    // Application name
+    name = "subscriptions";
+}
+
+import "${name}.so" as "${name}";
+
+%define {
+    entry-point subscriptions.subscriptions_main;
+}

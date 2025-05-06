@@ -1,0 +1,11 @@
+{
+    "object": "Device.MQTT.Client.2.",
+    "notification": "dm:object-changed",
+    "parameters": {
+        "BrokerAddress": {
+            "from": "",
+            "to": "Death Star Satellite"
+        }
+    },
+    "path": "Device.MQTT.Client.2."
+}

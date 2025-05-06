@@ -1,0 +1,15 @@
+%config {
+    backends = ['../mod-amxb-test-usp.so'];
+    listen = [ 'usp:/tmp/test.sock' ];
+    auto-connect = false;
+    auto-detect = false;
+
+    usp = {
+        EndpointID = "proto::test-plugin",
+        requires-device-prefix = true,
+        local-agent-dm = "../../odl/local-agent.odl",
+        translate = {
+            "'MQTT.'" = "Device.MQTT."
+        }
+    };
+}

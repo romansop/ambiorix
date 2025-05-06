@@ -1,0 +1,10 @@
+**/output/*
+**/run_test
+include_priv/amxb_usp_version.h
+**/.vscode
+**/mod-amxb-test-usp.so
+openwrt/*
+test/amxb_usp_common/test_mod/*.o
+test/amxb_usp_common/test_mod/*.d
+test/amxb_usp_common/test_mod/*.so
+test/obuspa/

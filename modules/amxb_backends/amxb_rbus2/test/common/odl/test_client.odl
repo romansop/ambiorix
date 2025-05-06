@@ -1,0 +1,19 @@
+ %config {
+    name = "test-client";
+
+    backend-dir = "../";
+
+    rbus = {
+        use-amx-calls = false
+    };
+
+    import-dbg = true;
+}
+
+import "../test_client/test_client.so" as "test_client";
+
+requires "Device.TestEvents.";
+
+%define {
+    entry-point test_client.test_client_main;
+}

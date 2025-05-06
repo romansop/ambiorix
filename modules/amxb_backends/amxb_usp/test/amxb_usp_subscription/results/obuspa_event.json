@@ -1,0 +1,9 @@
+{
+    "data": {
+        "Text": "Original",
+        "Truth": true,
+        "Number": 17
+    },
+    "notification": "MyEvent!",
+    "path": "Device.Greeter."
+}

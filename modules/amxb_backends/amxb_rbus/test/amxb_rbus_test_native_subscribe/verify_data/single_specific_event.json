@@ -1,0 +1,8 @@
+{
+    "object":"Device.TestEvents.",
+    "notification_path":"Device.TestEvents",
+    "notification":"TestEvent!",
+    "message":"Hello World",
+    "eobject":"Device.TestEvents.",
+    "path":"Device.TestEvents."
+}

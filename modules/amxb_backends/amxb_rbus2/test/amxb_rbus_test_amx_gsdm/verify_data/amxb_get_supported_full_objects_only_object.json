@@ -1,0 +1,23 @@
+[
+    {
+        "TopLevel.Level1.{i}.Level2B.{i}.": {
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.Level1.{i}.Level2A.": {
+            "is_multi_instance": false
+        },
+        "TopLevel.Level1.{i}.Level2C.{i}.": {
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.Level1.{i}.": {
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "TopLevel.Level1.{i}.Level2A.Level3.{i}.": {
+            "is_multi_instance": true,
+            "access": 1
+        }
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "object": "Device.Greeter.History.3.",
+        "index": 3,
+        "name": "ancient-history",
+        "parameters": {
+            "Alias": "ancient-history"
+        },
+        "path": "Device.Greeter.History.3."
+    }
+]

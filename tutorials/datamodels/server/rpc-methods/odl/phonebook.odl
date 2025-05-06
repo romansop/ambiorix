@@ -1,0 +1,14 @@
+%config {
+    // main files
+    definition_file = "${name}_definition.odl";
+    mibs_file = "${name}_mibs.odl";
+}
+
+import "${name}.so" as "${name}";
+
+include "${definition_file}";
+#include "${mibs_file}";
+
+%define {
+    entry-point phonebook.phonebook_main;
+}

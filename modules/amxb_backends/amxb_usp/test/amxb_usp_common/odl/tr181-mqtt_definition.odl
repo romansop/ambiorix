@@ -1,0 +1,227 @@
+import "mod-lua-amx.so" as "mod_lua";
+import "../test_mod/test_mod.so" as "test_mod";
+
+%define {
+    entry-point mod_lua.mod_lua_main;
+    entry-point test_mod.test_mod_main;
+}
+
+%define {
+    %persistent object MQTT {
+        object Capabilities {
+            %read-only csv_string ProtocolVersionsSupported = "3.1,3.1.1,5.0";
+            %read-only csv_string TransportProtocolSupported = "TCP/IP,TLS,WebSocket";
+        }
+        %persistent object Client[] {
+            event mqtt;
+            counted with ClientNumberOfEntries;
+            on action validate call mqtt_instance_is_valid;
+            on action destroy call mqtt_instance_cleanup;
+
+            uint32 TestRpc(%in string text, %in uint32 number, %out string combined) <!LUA:
+                function(object, args)
+                    local pretty = require 'pl.pretty'
+                    local out_args = { }
+                    local transaction = lamx.transaction.new()
+
+                    print("Method TestRpc called on object " .. object:get_path())
+                    pretty.dump(args)
+
+                    transaction:select(object)
+                    transaction:set("Number", args.number)
+                    transaction:set("Text", args.text)
+                    transaction:apply()
+
+                    out_args.combined = args.text .. " - " .. tostring(args.number)
+                    return args.number, out_args
+                end
+            !>;
+
+            uint32 test_out_args(%out string message, %out htable data);
+
+            %async uint32 test_out_args_deferred(%in uint32 time=5, %out string message, %out htable data);
+
+            %persistent %unique %key string Alias {
+                userflags %upc;
+            }
+            %persistent string Name {
+                userflags %upc;
+                on action validate call check_maximum_length 64;
+            }
+            bool Enable = false;
+            %read-only string Status {
+                default "Disabled";
+                on action validate call check_enum 
+                    ["Disabled", "Connecting", "Connected",
+                     "Error_Misconfigured", "Error_BrokerUnreachable",
+                     "Error"];
+            }
+
+            %persistent %protected string Interface {
+                userflags %upc;
+                default "";
+            }
+            %persistent string ProtocolVersion {
+                userflags %upc;
+                default "5.0";
+                on action validate call check_is_in "MQTT.Capabilities.ProtocolVersionsSupported";
+            }
+            %persistent string BrokerAddress {
+                userflags %upc;
+                on action validate call check_maximum_length 256;
+            }
+            %persistent uint32 BrokerPort {
+                userflags %upc;
+                default 1883;
+            }
+            %persistent string TransportProtocol {
+                userflags %upc;
+                default "TCP/IP";
+                on action validate call check_is_in "MQTT.Capabilities.TransportProtocolSupported";
+            } 
+            %persistent bool CleanSession {
+                userflags %upc;
+                default true;
+            }
+            %persistent bool CleanStart {
+                userflags %upc;
+                default true;
+            }
+            %persistent uint32 KeepAliveTime {
+                userflags %upc;
+                default 60;
+            }
+            %persistent string ClientID {
+                userflags %upc;
+                on action validate call check_maximum_length 65535;
+            }
+            %persistent string Username {
+                userflags %upc;
+                on action validate call check_maximum_length 256;
+            }
+            %persistent string Password {
+                userflags %upc;
+                on action validate call check_maximum_length 256;
+            }
+            %persistent uint32 MessageRetryTime {
+                userflags %upc;
+                default 5;
+                on action validate call check_minimum 1;
+            }
+            %persistent uint32 ConnectRetryTime {
+                userflags %upc;
+                default 5;
+                on action validate call check_minimum 1;
+            }
+            %persistent uint32 ConnectRetryIntervalMultiplier {
+                userflags %upc;
+                default 2000;
+                on action validate call check_range [1000, 65535];
+            }
+            %persistent uint32 ConnectRetryMaxInterval {
+                userflags %upc;
+                default 5120;
+                on action validate call check_minimum 1;
+            }
+            %read-only string ResponseInformation {
+                on action validate call check_maximum_length 65535;
+            }
+
+            /**
+             * The default send buffer size for TCP sockets in bytes.
+             * 0 mean this parameter is ignored, the sensible value is 174760.
+             * @version 1.0
+             */
+            %persistent %protected uint32 TcpSendMem {
+                default 0;
+            }
+
+            void ForceReconnect();
+            %protected void publish(%in %mandatory %strict string topic, %in %mandatory %strict string payload);
+
+            /**
+                Creates a unix domain listen socket for the MQTT Client where a service can connect to.
+                After connecting the service can use it to send IMTP messages to the MQTT client. If the
+                service is interested in receiving published messages from this client, it can list these
+                as comma-separated values in the receiver_types argument.
+
+                Args:
+                  - uri: Uniform Resource Identifier (RFC 3986) which contains the path to create the listen socket
+                    example: usp:/var/run/impt/client.sock
+                  - receiver_types: csv string of types of published messages that should be forwarded on the accepted connection.
+                    Possible types are:
+                        - USP
+             */
+            %protected uint32 CreateListenSocket(%in %mandatory %strict string uri, %in string receiver_types);
+
+            %persistent object Subscription[] {
+                counted with SubscriptionNumberOfEntries;
+                on action destroy call mqtt_subscription_cleanup;
+
+                %persistent %unique %key string Alias {
+                    userflags %upc;
+                }
+                %persistent bool Enable {
+                    userflags %upc;
+                    default false;
+                }
+                %read-only string Status {
+                    default "Unsubscribed";
+                    on action validate call check_enum
+                        ["Unsubscribed", "Subscribed",
+                         "Subscribing", "Unsubscribing", "Error"];
+                }
+                %persistent %unique string Topic {
+                    userflags %upc;
+                }
+                %persistent uint32 QoS {
+                    userflags %upc;
+                    default 0;
+                    on action validate call check_range [0, 2];
+                }
+            }
+
+            object Stats {
+                %read-only datetime BrokerConnectionEstablished;
+                %read-only datetime LastPublishMessageSent;
+                %read-only datetime LastPublishMessageReceived;
+
+                on action read call stats_read;
+                on action list call stats_list;
+                on action describe call stats_describe;
+            }
+
+            %persistent object UserProperty[] {
+                %persistent %unique %key string Alias {
+                    userflags %upc;
+                }
+                %persistent bool Enable {
+                    userflags %upc;
+                    default false;
+                }
+                %persistent %unique %key string Name {
+                    userflags %upc;
+                }
+                %persistent string Value {
+                    userflags %upc;
+                }
+                %persistent csv_string PacketType {
+                    userflags %upc;
+                }
+                // Add validate action to check if all entries are enum elements
+            }
+
+            %persistent %protected string CACertificate {
+                userflags %upc;
+            }
+
+            %persistent %protected string ClientCertificate {
+                userflags %upc;
+            }
+
+            %persistent %protected string PrivateKey {
+                userflags %upc;
+            }
+        }
+    }
+}

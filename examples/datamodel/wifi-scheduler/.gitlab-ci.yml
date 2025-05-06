@@ -1,0 +1,8 @@
+variables:
+  PC_CHECK_SCAN_BUILD: "off"
+  PC_RUN_TEST: "off"
+  PC_DOC_CHECK: "off"
+
+include:
+  - remote: 'https://gitlab.com/soft.at.home/ci/gitlab-ci/raw/main/ambiorix-default-pipeline.yml'
+

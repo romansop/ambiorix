@@ -1,0 +1,47 @@
+<manifest>
+    <remote name="origin" fetch="https://gitlab.com/prpl-foundation/components/ambiorix/"/>
+    <default revision="master" remote="origin" sync-j="4"/>
+    
+    <project name="libraries/libamxc.git" path="libraries/libamxc"/>
+    <project name="libraries/libamxj.git" path="libraries/libamxj"/>
+    <project name="libraries/libamxp.git" path="libraries/libamxp"/>
+    <project name="libraries/libamxm.git" path="libraries/libamxm"/>
+    <project name="libraries/libamxt.git" path="libraries/libamxt"/>
+    <project name="libraries/libamxd.git" path="libraries/libamxd"/>
+    <project name="libraries/libamxo.git" path="libraries/libamxo"/>
+    <project name="libraries/libamxb.git" path="libraries/libamxb"/>
+    <project name="libraries/libamxa.git" path="libraries/libamxa"/>
+    <project name="libraries/libamxs.git" path="libraries/libamxs"/>
+    <project name="libraries/libamxrt.git" path="libraries/libamxrt"/>
+
+    <project name="tools/libraries/libamxut.git" path="tools/libraries/libamxut"/>
+
+    <project name="applications/amxrt.git" path="applications/amxrt"/>
+    <project name="applications/amxo-cg.git" path="applications/amxo-cg"/>
+    <project name="applications/amxo-xml-to.git" path="applications/amxo-xml-to"/>
+    <project name="applications/amxb-inspect.git" path="applications/amxb-inspect"/>
+    <project name="applications/amx-cli.git" path="applications/amx-cli"/>
+    <project name="applications/acl-manager.git" path="applications/acl-manager"/>
+    <project name="applications/amx-fcgi.git" path="applications/amx-fcgi"/>
+
+    <project name="modules/amxb_backends/amxb_pcb.git" path="bus_adaptors/amxb_pcb"/>
+    <project name="modules/amxb_backends/amxb_ubus.git" path="bus_adaptors/amxb_ubus"/>
+    <project name="modules/amxb_backends/amxb_dummy.git" path="bus_adaptors/amxb_dummy"/>
+
+    <project name="modules/amx_cli/mod-ba-cli.git" path="cli_extensions/mod-ba-cli"/>
+    <project name="modules/amx_cli/mod-dm-cli.git" path="cli_extensions/mod-dm-cli"/>
+
+    <project name="bindings/python3.git" path="bindings/python3"/>
+    <project name="bindings/lua/lua-amx.git" path="bindings/lua/lua-amx"/>
+    <project name="bindings/lua/mod-lua-amx.git" path="bindings/lua/mod-lua-amx"/>
+
+    <project name="examples/baapi/subscribe.git" path="examples/baapi/subscribe"/>
+    <project name="examples/datamodel/greeter_plugin.git" path="examples/datamodel/greeter_plugin"/>
+    <project name="examples/datamodel/greeter_app.git" path="examples/datamodel/greeter_app"/>
+    <project name="examples/datamodel/cpu-info.git" path="examples/datamodel/cpu-info"/>
+    <project name="examples/datamodel/localagent_threshold.git" path="examples/datamodel/tr181-localagent_threshold"/>
+    <project name="examples/datamodel/ssh-server.git" path="examples/datamodel/ssh-server"/>
+    <project name="examples/collections/llist_contacts.git" path="examples/collections/llist_contacts"/>
+    <project name="examples/collections/htable_contacts.git" path="examples/collections/htable_contacts"/>
+    <project name="examples/collections/variant_contacts.git" path="examples/collections/variant_contacts"/>
+</manifest>

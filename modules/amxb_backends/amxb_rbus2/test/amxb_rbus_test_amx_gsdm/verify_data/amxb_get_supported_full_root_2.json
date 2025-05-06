@@ -1,0 +1,238 @@
+[
+    {
+        "Device.SoftwareModules.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "ExecEnvClassNumberOfEntries",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": false
+        },
+        "Device.TestEvents.Table.{i}.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Text",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Number",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "Device.SoftwareModules.ExecEnvClass.{i}.Capability.{i}.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "SpecificationVersion",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Specification",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "SpecificationURI",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "Device.SoftwareModules.ExecEnvClass.{i}.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "CapabilityNumberOfEntries",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Name",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Version",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Alias",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "DeploymentUnitRef",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Vendor",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "Device.TestDescribe.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "InitialExecutionUnitRunLevel",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Enable",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "CurrentRunLevel",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Name",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Status",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "InitialRunLevel",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Type",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": false
+        },
+        "Device.SoftwareModules.ExecEnv.{i}.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "InitialExecutionUnitRunLevel",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "CurrentRunLevel",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Status",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Enable",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Name",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Alias",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "InitialRunLevel",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Type",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": true,
+            "access": 1
+        },
+        "Device.TestEvents.": {
+            "supported_events": {
+                "amx_notify!": []
+            },
+            "supported_params": [
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Text",
+                    "access": 1
+                },
+                {
+                    "type": 1,
+                    "value_change": true,
+                    "param_name": "Number",
+                    "access": 1
+                }
+            ],
+            "is_multi_instance": false
+        }
+    }
+]

@@ -1,0 +1,63 @@
+name: libamxs
+
+short_description: "Data model synchronization C-API"
+long_description: ""
+
+type: library
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/libraries/libamxs"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_LIB_AMXS:
+    super: True
+    default: y
+    type: bool
+    description: "Build libamxs"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+doc:
+  parser: "amx"
+  doxygen: "doc/libamxs.doxy"
+
+artifacts:
+- source: "include/amxs/*.h"
+  destination: "$(INCLUDEDIR)/amxs/"
+  permissions: "0644"
+- source: "output/$(MACHINE)/$(COMPONENT).so.$(VERSION)"
+  destination: "$(LIBDIR)/$(COMPONENT).so.$(VERSION)"
+  permissions: "0644"
+  version: True
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxp"
+    min: "*"
+  - name: "libamxb"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxp"
+  - name: "libamxb"
+  - name: "libamxd"

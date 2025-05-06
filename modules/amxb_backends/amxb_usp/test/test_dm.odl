@@ -1,0 +1,31 @@
+%define {
+    object test_root {
+        object child[] {
+            %unique %key string Alias;
+            string Name;
+            object box[] {
+                %unique %key string Alias;
+                uint32 length = 50;
+                bool liar = true;
+            }
+            void run_invoke(%in %mandatory %strict string text, %in %mandatory %strict uint32 count);
+        }
+    }
+}
+
+%populate {
+    object test_root {
+        object child {
+            instance add (Alias = "One") {
+                parameter Name = "Child One";
+            }
+            instance add (Alias = "Two") {
+                parameter Name = "Child Two";
+                object box {
+                    instance add (Alias = "First");
+                }
+            }
+        }
+    }
+}
+

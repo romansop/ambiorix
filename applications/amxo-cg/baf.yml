@@ -1,0 +1,73 @@
+name: amxo-cg
+short_description: "Object Definition Language Compiler/Generator"
+long_description: ""
+
+type: application
+category: amx
+
+urls:
+  opensource: "https://gitlab.com/prpl-foundation/components/ambiorix/applications/amxo-cg"
+
+licenses:
+- name: "BSD-2-Clause-Patent"
+  holder: "SoftAtHome"
+
+configs:
+  CONFIG_SAH_SERVICES_AMXO_CG:
+    super: True
+    default: y
+    type: bool
+    description: "Build amxo-cg application"
+
+makefiles:
+  default: "makefile"
+  compile:
+    - directory: "src"
+  clean:
+    - directory: "src"
+    - directory: "test"
+  test:
+    - directory: "test"
+      target: "run"
+    - directory: "test"
+      target: "coverage"
+
+artifacts:
+- source: "src/$(COMPONENT)"
+  destination: "$(BINDIR)/$(COMPONENT)"
+  permissions: "0755"
+  version: False
+- source: "odl/amxo-cg.odl"
+  destination: "/etc/amx/amxo-cg/amxo-cg.odl"
+  permissions: "0644"
+- source: "odl/amxo-cg-tr181-full.odl"
+  destination: "/etc/amx/amxo-cg/amxo-cg-tr181-full.odl"
+  permissions: "0644"
+
+dependencies:
+  compile:
+  - name: "libamxc"
+    min: "*"
+  - name: "libamxj"
+    min: "*"
+  - name: "libamxp"
+    min: "*"
+  - name: "libamxd"
+    min: "*"
+  - name: "libamxo"
+    min: "*"
+  - name: "libxml2"
+    min: "*"
+  - name: "yajl"
+    min: "*"
+  - name: "libamxs"
+    min: "*"
+  runtime:
+  - name: "libamxc"
+  - name: "libamxj"
+  - name: "libamxp"
+  - name: "libamxd"
+  - name: "libamxo"
+  - name: "libxml2"
+  - name: "yajl"
+  - name: "libamxs"

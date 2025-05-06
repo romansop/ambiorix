@@ -1,0 +1,47 @@
+<manifest>
+    <remote name="origin" fetch="https://gitlab.com/prpl-foundation/components/ambiorix/"/>
+    <default revision="master" remote="origin" sync-j="4"/>
+    
+    <project name="libraries/libamxc.git" path="libraries/libamxc" revision="refs/tags/v2.0.0"/>
+    <project name="libraries/libamxj.git" path="libraries/libamxj" revision="refs/tags/v1.0.0"/>
+    <project name="libraries/libamxp.git" path="libraries/libamxp" revision="refs/tags/v2.0.0"/>
+    <project name="libraries/libamxm.git" path="libraries/libamxm" revision="refs/tags/v0.0.65"/>
+    <project name="libraries/libamxt.git" path="libraries/libamxt" revision="refs/tags/v1.0.0"/>
+    <project name="libraries/libamxd.git" path="libraries/libamxd" revision="refs/tags/v6.5.1"/>
+    <project name="libraries/libamxo.git" path="libraries/libamxo" revision="refs/tags/v5.0.0"/>
+    <project name="libraries/libamxb.git" path="libraries/libamxb" revision="refs/tags/v4.9.3"/>
+    <project name="libraries/libamxa.git" path="libraries/libamxa" revision="refs/tags/v0.11.0"/>
+    <project name="libraries/libamxs.git" path="libraries/libamxs" revision="refs/tags/v0.6.0"/>
+    <project name="libraries/libamxrt.git" path="libraries/libamxrt" revision="refs/tags/v0.5.1"/>
+
+    <project name="tools/libraries/libamxut.git" path="tools/libraries/libamxut" revision="refs/tags/v1.7.0"/>
+
+    <project name="applications/amxrt.git" path="applications/amxrt" revision="refs/tags/v2.1.3"/>
+    <project name="applications/amxo-cg.git" path="applications/amxo-cg" revision="refs/tags/v1.4.3"/>
+    <project name="applications/amxo-xml-to.git" path="applications/amxo-xml-to" revision="refs/tags/v0.2.7"/>
+    <project name="applications/amxb-inspect.git" path="applications/amxb-inspect" revision="refs/tags/v1.2.1"/>
+    <project name="applications/amx-cli.git" path="applications/amx-cli" revision="refs/tags/v0.5.1"/>
+    <project name="applications/acl-manager.git" path="applications/acl-manager" revision="refs/tags/v0.6.7"/>
+    <project name="applications/amx-fcgi.git" path="applications/amx-fcgi" revision="refs/tags/v1.3.9"/>
+
+    <project name="modules/amxb_backends/amxb_pcb.git" path="bus_adaptors/amxb_pcb" revision="refs/tags/v3.10.1"/>
+    <project name="modules/amxb_backends/amxb_ubus.git" path="bus_adaptors/amxb_ubus" revision="refs/tags/v3.3.2"/>
+    <project name="modules/amxb_backends/amxb_dummy.git" path="bus_adaptors/amxb_dummy" revision="refs/tags/v1.0.4"/>
+
+    <project name="modules/amx_cli/mod-ba-cli.git" path="cli_extensions/mod-ba-cli" revision="refs/tags/v0.11.3"/>
+    <project name="modules/amx_cli/mod-dm-cli.git" path="cli_extensions/mod-dm-cli" revision="refs/tags/v0.2.6"/>
+
+    <project name="bindings/python3.git" path="bindings/python3" revision="refs/tags/v0.4.0"/>
+    <project name="bindings/lua/lua-amx.git" path="bindings/lua/lua-amx" revision="refs/tags/v0.5.5"/>
+    <project name="bindings/lua/mod-lua-amx.git" path="bindings/lua/mod-lua-amx" revision="refs/tags/v0.1.11"/>
+
+    <project name="examples/baapi/subscribe.git" path="examples/baapi/subscribe" revision="refs/tags/v1.1.0"/>
+    <project name="examples/datamodel/greeter_plugin.git" path="examples/datamodel/greeter_plugin" revision="refs/tags/v0.4.5"/>
+    <project name="examples/datamodel/greeter_app.git" path="examples/datamodel/greeter_app" revision="refs/tags/v1.0.3"/>
+    <project name="examples/datamodel/cpu-info.git" path="examples/datamodel/cpu-info" revision="refs/tags/v0.1.3"/>
+    <project name="examples/datamodel/localagent_threshold.git" path="examples/datamodel/tr181-localagent_threshold" revision="refs/tags/v0.2.21"/>
+    <project name="examples/datamodel/ssh-server.git" path="examples/datamodel/ssh-server" revision="refs/tags/v0.1.5"/>
+    <project name="examples/collections/llist_contacts.git" path="examples/collections/llist_contacts" revision="refs/tags/v0.0.12"/>
+    <project name="examples/collections/htable_contacts.git" path="examples/collections/htable_contacts" revision="refs/tags/v0.0.13"/>
+    <project name="examples/collections/variant_contacts.git" path="examples/collections/variant_contacts" revision="refs/tags/v0.0.12"/>
+</manifest>

@@ -1,0 +1,11 @@
+import "mod-dmext.so";
+
+%define {
+    select Phonebook.Contact {
+        %persistent object PhoneNumber[] {
+            %persistent string Phone = "" {
+                on action validate call matches_regexp "^\\(\\+[0-9]{2,3}\\)?([ 0-9]){8,16}$";
+            }
+        }
+    }
+}

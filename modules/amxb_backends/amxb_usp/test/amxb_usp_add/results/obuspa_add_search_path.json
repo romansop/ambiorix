@@ -1,0 +1,20 @@
+[
+    {
+        "object": "Device.Greeter.History.1.Info.1.",
+        "index": 1,
+        "name": "test-info",
+        "parameters": {
+            "Alias": "test-info"
+        },
+        "path": "Device.Greeter.History.1.Info.1."
+    },
+    {
+        "object": "Device.Greeter.History.2.Info.2.",
+        "index": 2,
+        "name": "test-info",
+        "parameters": {
+            "Alias": "test-info"
+        },
+        "path": "Device.Greeter.History.2.Info.2."
+    }
+]

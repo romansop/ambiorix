@@ -1,0 +1,72 @@
+%define {
+    %persistent object WiFi {
+        %persistent object DataElements {
+            %persistent object Network {
+                %persistent object Schedule[] {
+                    on action destroy call schedule_cleanup;
+                    on event "dm:instance-added" call schedule_added;
+                    on event "dm:instance-removed" call schedule_deleted;
+                    on event "dm:object-changed" call schedule_changed;
+
+                    %unique %key string Alias;
+                    %persistent bool Enable;
+                    %persistent csv_string Day {
+                        on action validate call check_enum ["monday","tuesday","wednesday","thursday","friday","saterday","sunday"];
+                    }
+                    %persistent string StartTime {
+                        on action validate call matches_regexp  "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$";
+                    }
+                    %persistent uint32 Duration {
+                        on action validate call check_maximum 604800;
+                    }
+                    %persistent csv_string DeviceList;
+                }
+
+                %persistent object SSID[] {
+                    %persistent object Schedule[] {
+                        on action destroy call schedule_cleanup;
+                        on event "dm:instance-added" call schedule_added;
+                        on event "dm:instance-removed" call schedule_deleted;
+                        on event "dm:object-changed" call schedule_changed;
+
+                        %unique %key string Alias;
+                        %persistent bool Enable;
+                        %persistent csv_string Day {
+                            on action validate call check_enum ["monday","tuesday","wednesday","thursday","friday","saterday","sunday"];
+                        }
+                        %persistent string StartTime {
+                            on action validate call matches_regexp  "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$";
+                        }
+                        %persistent uint32 Duration {
+                            on action validate call check_maximum 604800;
+                        }
+                        %persistent csv_string DeviceList;
+                    }
+                }
+
+                %persistent object Group[] {
+                    %persistent object Schedule[] {
+                        on action destroy call schedule_cleanup;
+                        on event "dm:instance-added" call schedule_added;
+                        on event "dm:instance-removed" call schedule_deleted;
+                        on event "dm:object-changed" call schedule_changed;
+
+                        %unique %key string Alias;
+                        %persistent bool Enable;
+                        %persistent csv_string Day {
+                            on action validate call check_enum ["monday","tuesday","wednesday","thursday","friday","saterday","sunday"];
+                        }
+                        %persistent string StartTime {
+                            on action validate call matches_regexp  "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$";
+                        }
+                        %persistent uint32 Duration {
+                            on action validate call check_maximum 604800;
+                        }
+                        %persistent csv_string DeviceList;
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,9 @@
+import "mod-busstats.so" as "mod-busstats";
+
+%define {
+    entry-point mod-busstats.main;
+}
+
+%populate {
+    on event "app:start" call app_start<!import:mod-busstats:app_start!>;
+}

@@ -1,0 +1,12 @@
+{
+    "object": "Device.Greeter.History.",
+    "index": 3,
+    "keys": {
+        "Alias": "cpe-History-3"
+    },
+    "notification": "dm:instance-added",
+    "parameters": {
+        "Alias": "cpe-History-3"
+    },
+    "path": "Device.Greeter.History."
+}

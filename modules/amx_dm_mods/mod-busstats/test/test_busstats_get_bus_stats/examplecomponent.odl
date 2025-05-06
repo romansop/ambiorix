@@ -1,0 +1,19 @@
+%define {
+	object ExampleComponent {
+        string Parameter1;
+        void Function();
+        object MultiInstance[] {
+            string Parameter2;
+        }
+	}
+
+    object AnotherRootObject {
+        string Parameter3;
+    }
+
+    object ThirdRootObject {
+
+    }
+}
+
+#include "mod-busstats.odl";

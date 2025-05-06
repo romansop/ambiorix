@@ -1,0 +1,11 @@
+%config {
+    name = "phonebook";
+}
+
+import "${name}.so" as "${name}";
+
+include "phonebook_definition.odl";
+
+%define {
+    entry-point phonebook.phonebook_main;
+}

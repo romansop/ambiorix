@@ -1,0 +1,69 @@
+%populate {
+    object TopLevel.Level1 {
+        instance add() {
+            parameter L1UnsignedNumber = 10;
+            object Level2A.Level3 {
+                instance add() {
+                    parameter L3Text = "A";
+                }
+                instance add() {
+                    parameter L3Text = "A";
+                }
+                instance add() {
+                    parameter L3Text = "B";
+                }
+            }
+            object Level2B {
+                instance add(1, "cpe-alias-1");
+                instance add(2, "cpe-alias-2");
+                instance add(3, "cpe-alias-3");
+                instance add(4, "cpe-alias-4");
+            }
+            object Level2C {
+                instance add();
+            }
+        }
+
+
+        instance add() {
+            parameter L1UnsignedNumber = 20;
+            object Level2A.Level3 {
+                instance add() {
+                    parameter L3Text = "A";
+                }
+                instance add() {
+                    parameter L3Text = "B";
+                }
+                instance add() {
+                    parameter L3Text = "C";
+                }
+            }
+            object Level2B {
+                instance add(1, "cpe-alias-1");
+                instance add(2, "cpe-alias-2");
+                instance add(3, "cpe-alias-3");
+                instance add(4, "cpe-alias-4");
+            }
+            object Level2C {
+                instance add();
+                instance add();
+            }
+        }
+
+        instance add() {
+            parameter L1UnsignedNumber = 22;
+            object Level2A.Level3 {
+                instance add() {
+                    parameter L3Text = "A";
+                }
+                instance add() {
+                    parameter L3Text = "B";
+                }
+                instance add() {
+                    parameter L3Text = "C";
+                }
+            }
+        }
+
+    }   
+}

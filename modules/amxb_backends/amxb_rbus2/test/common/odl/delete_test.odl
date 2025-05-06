@@ -1,0 +1,16 @@
+%config {
+    name = "registration-test";
+    backend-dir = "../";
+    rbus = {
+        use-amx-calls=true
+    };
+}
+
+import "../test_mod/test_mod.so" as "test_mod";
+
+include "registration_test_definition.odl";
+include "delete_test_instances.odl";
+
+%define {
+    entry-point test_mod.test_mod_main;
+}

@@ -1,0 +1,11 @@
+import "mod-dmext.so";
+
+%define {
+    select Phonebook.Contact {
+        %persistent object E-Mail[] {
+            %persistent string E-Mail = "" {
+                on action validate call matches_regexp "^[[:graph:]]+@[[:graph:]]+\\.[[:graph:]]+$";
+            }
+        }
+    }
+}

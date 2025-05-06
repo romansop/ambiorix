@@ -1,0 +1,30 @@
+%config {
+    name = "test-events";
+
+    backend-dir = "../";
+
+    rbus = {
+        skip-register = { "'Device.'" = true },
+        use-amx-calls = false
+    };
+}
+
+import "../test_mod/test_mod.so" as "test_mod";
+
+%define {
+    object 'Device' {
+        object TestEvents {
+            string Text;
+            uint32 Number;
+
+            event 'TestEvent!';
+
+            void test_send_event();
+
+            object Table[] {
+                string Text;
+                uint32 Number;
+            }
+        }
+    }
+}

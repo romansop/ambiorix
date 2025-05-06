@@ -1,0 +1,49 @@
+[
+    {
+        "TopLevel.Level1.1.Level2A.Level3.2.": {},
+        "TopLevel.Level1.2.": {},
+        "TopLevel.Level1.1.Level2B.1.": {
+            "Alias": "cpe-alias-1"
+        },
+        "TopLevel.Level1.3.Level2A.Level3.3.": {},
+        "TopLevel.Level1.2.Level2B.2.": {
+            "Alias": "cpe-alias-2"
+        },
+        "TopLevel.Level1.2.Level2C.1.": {
+            "Alias": "cpe-Level2C-1"
+        },
+        "TopLevel.Level1.1.Level2A.Level3.3.": {},
+        "TopLevel.Level1.3.": {},
+        "TopLevel.Level1.1.Level2B.2.": {
+            "Alias": "cpe-alias-2"
+        },
+        "TopLevel.Level1.1.Level2C.1.": {
+            "Alias": "cpe-Level2C-1"
+        },
+        "TopLevel.Level1.2.Level2A.Level3.1.": {},
+        "TopLevel.Level1.2.Level2C.2.": {
+            "Alias": "cpe-Level2C-2"
+        },
+        "TopLevel.Level1.2.Level2B.3.": {
+            "Alias": "cpe-alias-3"
+        },
+        "TopLevel.Level1.1.Level2B.3.": {
+            "Alias": "cpe-alias-3"
+        },
+        "TopLevel.Level1.3.Level2A.Level3.1.": {},
+        "TopLevel.Level1.2.Level2A.Level3.2.": {},
+        "TopLevel.Level1.1.Level2A.Level3.1.": {},
+        "TopLevel.Level1.2.Level2B.4.": {
+            "Alias": "cpe-alias-4"
+        },
+        "TopLevel.Level1.1.": {},
+        "TopLevel.Level1.1.Level2B.4.": {
+            "Alias": "cpe-alias-4"
+        },
+        "TopLevel.Level1.3.Level2A.Level3.2.": {},
+        "TopLevel.Level1.2.Level2B.1.": {
+            "Alias": "cpe-alias-1"
+        },
+        "TopLevel.Level1.2.Level2A.Level3.3.": {}
+    }
+]

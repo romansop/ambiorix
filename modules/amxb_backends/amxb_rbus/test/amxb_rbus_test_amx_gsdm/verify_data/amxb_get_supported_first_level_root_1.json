@@ -1,0 +1,13 @@
+[
+    {
+        "Device.SoftwareModules.": {
+            "is_multi_instance": false
+        },
+        "Device.TestDescribe.": {
+            "is_multi_instance": false
+        },
+        "Device.TestEvents.": {
+            "is_multi_instance": false
+        }
+    }
+]

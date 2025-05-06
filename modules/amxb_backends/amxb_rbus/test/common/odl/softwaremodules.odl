@@ -1,0 +1,86 @@
+%config {
+    name = "test-software-modules";
+
+    backend-dir = "../";
+
+    rbus = {
+        skip-register = { "'Device.'" = true }
+    };
+}
+
+%define {
+    object 'Device' {
+
+        object 'SoftwareModules' {
+            object 'ExecEnvClass'[] {
+                counted with 'ExecEnvClassNumberOfEntries';
+
+                %unique %key string Alias;
+                %read-only string Name;
+                string Vendor;
+                %read-only string Version;
+                %read-only string DeploymentUnitRef;
+
+                object 'Capability'[] {
+                    counted with 'CapabilityNumberOfEntries';
+                    %read-only string Specification;
+                    %read-only string SpecificationVersion;
+                    %read-only string SpecificationURI;
+                }
+            }
+
+            object 'ExecEnv'[] {
+                bool 'Enable';
+                %read-only string 'Status';
+                %unique %key string 'Alias';
+                %read-only string 'Name';
+                %read-only string 'Type';
+                uint32 InitialRunLevel;
+                %read-only int32 CurrentRunLevel;
+                int32 InitialExecutionUnitRunLevel;
+            }
+        }
+    }   
+}
+
+%populate {
+    object 'Device.SoftwareModules' {
+        object 'ExecEnvClass' {
+            instance add() {
+                parameter 'Name' = "TestEnvClass";
+                parameter 'Vendor' = "TestVendor";
+                parameter 'Version' = "1.0.0";
+                parameter 'DeploymentUnitRef' = "TestRef";
+                object 'Capability' {
+                    instance add() {
+                        parameter 'Specification' = "TestSpecification";
+                        parameter 'SpecificationVersion' = "1.0.1";
+                        parameter 'SpecificationURI' = "https://test.com/test_uri";
+                    }
+                }
+            }
+        }
+
+        object 'ExecEnv' {
+            instance add() {
+                parameter 'Enable' = true;
+                parameter 'Status' = "Up";
+                parameter 'Name' = "TestEnv";
+                parameter 'Type' = "TestType";
+                parameter 'InitialRunLevel' = 10;
+                parameter 'CurrentRunLevel' = -1;
+                parameter 'InitialExecutionUnitRunLevel' = 100;
+            }
+
+            instance add() {
+                parameter 'Enable' = false;
+                parameter 'Status' = "Disabled";
+                parameter 'Name' = "DisabledTestEnv";
+                parameter 'Type' = "TestType";
+                parameter 'InitialRunLevel' = 1;
+                parameter 'CurrentRunLevel' = -1;
+                parameter 'InitialExecutionUnitRunLevel' = 0;
+            }
+        }
+    }
+}

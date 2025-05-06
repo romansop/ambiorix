@@ -1,0 +1,36 @@
+import "../test_mod/test_mod.so" as "test_mod";
+
+%config {
+    name = "method-test";
+    backend-dir = "../";
+    rbus = {
+        use-amx-calls=false
+    };
+    import-dbg = true;
+}
+
+%define {
+    object Device {
+        object TestObject {
+            string Alias;
+            
+            uint32 print_message(%in %mandatory string message);
+
+            uint32 print_message_deferred(%in %mandatory string message, %in uint32 time=1);
+
+            uint32 test_out_args(%out string message, %out htable data);
+
+            uint32 test_out_args_deferred(%in uint32 time=5, %out string message, %out htable data);
+
+            void test_start_timer(%in uint32 ms_interval=100);
+            void test_stop_timer();
+            void test_reset_counter();
+
+            uint32 Counter = 0;
+        }
+    }
+}
+
+%define {
+    entry-point test_mod.test_mod_main;
+}

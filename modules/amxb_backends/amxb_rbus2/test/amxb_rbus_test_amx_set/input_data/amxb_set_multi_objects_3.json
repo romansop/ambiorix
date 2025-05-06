@@ -1,0 +1,17 @@
+[
+    {
+        "parameters": {
+            "Enable": true,
+            "InitialRunLevel": 99
+        },
+        "path": "Device.SoftwareModules.ExecEnv.*."
+    },
+    {
+        "parameters": {
+            "L2AText": "TestingInvalidValues",
+            "L2AUnsignedNumber": 200,
+            "L2ASignedNumber": 101
+        },
+        "path": "TopLevel.Level1.1.Level2A."
+    }
+]

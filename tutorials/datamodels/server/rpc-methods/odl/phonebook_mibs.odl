@@ -1,0 +1,34 @@
+import "mod-dmext.so";
+
+%define {
+    mib Coworker {
+        %persistent string Department = "" {
+            on action validate call check_maximum_length 64;
+        }
+        %persistent string Team = "" {
+            on action validate call check_maximum_length 64;
+        }
+    }
+
+    mib Family {
+        %persistent string Relation = "" {
+            on action validate call check_enum
+                [ "", "Sibling", "Parent", "Grandparent", "Uncle", "Aunt" ];
+        }
+        %persistent datetime Birthday;
+    }
+
+    mib Business {
+        %persistent string Company = "" {
+            on action validate call check_maximum_length 64;
+        }
+        %persistent string Website = "" {
+            on action validate call check_maximum_length 100;
+            on action validate call matches_regexp "^w{3}\\.[[:graph:]]+\\.[[:graph:]]{2,4}$";
+        }
+    }
+
+    mib Friend {
+        %persistent csv_string Hobbies = "";
+    }
+}

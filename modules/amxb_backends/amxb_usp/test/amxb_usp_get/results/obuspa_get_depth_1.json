@@ -1,0 +1,9 @@
+[
+    {
+        "Device.Greeter.": {
+            "MaxHistory": 10,
+            "NumberOfHistoryEntries": 2,
+            "State": "Idle"
+        }
+    }
+]

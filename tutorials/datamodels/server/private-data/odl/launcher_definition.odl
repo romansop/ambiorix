@@ -1,0 +1,19 @@
+%define {
+    %persistent object Launcher {
+
+        %persistent object Application[] {
+            // TODO: add destroy action
+
+            %persistent ssv_string Command;
+            string Status = "Idle" {
+                on action validate call check_enum
+                    ["Idle", "Running", "Stopped"];
+            }
+            %read-only uint32 PID = 0;
+            %read-only int32 ExitCode = 0;
+
+            bool start();
+            bool stop();
+        }
+    }
+}

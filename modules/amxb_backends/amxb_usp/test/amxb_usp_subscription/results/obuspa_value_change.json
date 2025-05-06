@@ -1,0 +1,11 @@
+{
+    "object": "Device.Greeter.",
+    "notification": "dm:object-changed",
+    "parameters": {
+        "State": {
+            "from": "",
+            "to": "Start"
+        }
+    },
+    "path": "Device.Greeter."
+}

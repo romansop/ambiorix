@@ -1,0 +1,10 @@
+%populate {
+    object MQTT.Client {
+        instance add (1, "test-client-1", Name = "test-client-1") {
+            parameter BrokerPort = 1883;
+        }
+        instance add (2, "test-client-2", Name = "test-client-2") {
+            parameter BrokerPort = 1893;
+        }
+    }
+}

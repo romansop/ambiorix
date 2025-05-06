@@ -1,0 +1,21 @@
+{
+    "cmd_name": "test_out_args_deferred()",
+    "notification": "OperationComplete",
+    "output_args": {
+        "data": {
+            "HostObject.1.": {
+                "EnvVariable.1.": {
+                    "ModuleVersion": "testVersion",
+                    "Key": "testKey",
+                    "Value": "testValue"
+                },
+                "Options": "Option1,Option2",
+                "Source": "testSource",
+                "Destination": "testDestination"
+            }
+        },
+        "_retval": 0,
+        "message": "Hello World"
+    },
+    "path": "Device.Greeter."
+}

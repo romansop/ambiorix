@@ -1,0 +1,15 @@
+%populate {
+    object TopLevel.Level1 {
+        instance add() {
+            object Level2A.Level3 {
+                instance add();
+            }
+            object Level2B {
+                instance add();
+            }
+            object Level2C {
+                instance add();
+            }
+        }
+    }   
+}

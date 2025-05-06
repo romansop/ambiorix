@@ -1,0 +1,43 @@
+import "mod-dmext.so";
+import "ethernetlink.so";
+ 
+%define {
+    object Ethernet {
+        uint32 LinkNumberOfEntries;
+        object Link[] {
+            on action validate call link_instance_is_valid;
+
+            bool Enable;
+            string Status = "Down" {
+                // TODO: add validation action
+            }
+            string Alias { // TODO: Make it a real "Alias"
+                // TODO: add validation action
+            }
+            uint32 LastChange;
+            csv_string LowerLayers = "" {
+                on action validate call check_maximum_length 1024;
+            }
+            string MACAddress {
+                // TODO: Add validation action, make sure it is a valid MACAddress, see mod_dmext module
+            }
+            object Stats {
+                uint64 BytesSent;
+                uint64 BytesReceived;
+                uint64 PacketsSent;
+                uint64 PacketsReceived;
+                uint32 ErrorsSent;
+                uint32 ErrorsReceived;
+                uint64 UnicastPacketsSent;
+                uint64 UnicastPacketsReceived;
+                uint32 DiscardPacketsSent;
+                uint32 DiscardPacketsReceived;
+                uint64 MulticastPacketsSent;
+                uint64 MulticastPacketsReceived;
+                uint64 BroadcastPacketsSent;
+                uint64 BroadcastPacketsReceived;
+                uint32 UnknownProtoPacketsReceived;
+            }
+        }
+    }
+}

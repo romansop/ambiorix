@@ -1,0 +1,15 @@
+%config {
+    // main files
+    definition_file = "${name}_definition.odl";
+
+    system-signals = [ 17 ]; // enable SIGCHILD
+
+}
+
+import "${name}.so" as "${name}";
+
+include "${definition_file}";
+
+%define {
+    entry-point launcher.launcher_main;
+}

@@ -1,0 +1,24 @@
+%config {
+    name = "test-events";
+
+    backend-dir = "../";
+
+    rbus = {
+        skip-register = { "'Device.'" = true },
+        use-amx-calls = false
+    };
+}
+
+%define {
+    object 'Device' {
+        object TestEvents {
+            string Text;
+            uint32 Number;
+
+            object Table[] {
+                string Text;
+                uint32 Number;
+            }
+        }
+    }
+}

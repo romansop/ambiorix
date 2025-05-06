@@ -1,0 +1,8 @@
+[
+    {
+        "Device.SoftwareModules.ExecEnv.1.": {
+            "Enable": "true",
+            "InitialRunLevel": 30
+        }
+    }
+]

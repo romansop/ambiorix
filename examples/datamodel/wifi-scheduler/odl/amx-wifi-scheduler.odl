@@ -1,0 +1,25 @@
+%config {
+    storage-path = "${rw_data_path}/${name}/";
+    
+    odl = {
+        dm-save = true,
+        dm-load = true,
+        load-dm-events = true,
+        dm-save-on-changed = true,
+        dm-save-delay = 1000,
+        dm-defaults = "${cfg-dir}/${name}/defaults/",
+        directory = "${storage-path}/odl"
+    };
+
+    // main files
+    definition_file = "${name}_definition.odl";
+}
+
+import "${name}.so" as "${name}";
+import "mod-dmext.so" as "dmext";
+
+include "${definition_file}";
+
+%define {
+    entry-point amx-wifi-scheduler.wifi_scheduler_main;
+}
